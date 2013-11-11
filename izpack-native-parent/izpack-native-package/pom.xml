@@ -4,7 +4,7 @@
     <parent>
         <artifactId>izpack-native-parent</artifactId>
         <groupId>org.codehaus.izpack</groupId>
-        <version>5.0.0-rc1-SNAPSHOT</version>
+        <version>5.0.0-rc2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,43 +15,43 @@
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-coioshelper</artifactId>
-            <version>${pom.version}</version>
+            <version>${project.version}</version>
             <type>dll</type>
         </dependency>
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-coioshelper-x64</artifactId>
-            <version>${pom.version}</version>
+            <version>${project.version}</version>
             <type>dll</type>
         </dependency>
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-shelllink</artifactId>
-            <version>${pom.version}</version>
+            <version>${project.version}</version>
             <type>dll</type>
         </dependency>
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-shelllink-x64</artifactId>
-            <version>${pom.version}</version>
+            <version>${project.version}</version>
             <type>dll</type>
         </dependency>
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-setupapi</artifactId>
-            <version>${pom.version}</version>
+            <version>${project.version}</version>
             <type>dll</type>
         </dependency>
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-setupapi-x64</artifactId>
-            <version>${pom.version}</version>
+            <version>${project.version}</version>
             <type>dll</type>
         </dependency>
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-shelllink-x64</artifactId>
-            <version>${pom.version}</version>
+            <version>${project.version}</version>
             <type>dll</type>
         </dependency>
     </dependencies>
@@ -80,7 +80,7 @@
                 <configuration>
                     <tasks>
                         <copy todir="../izpack-native/src/main/resources/com/izforge/izpack/bin/">
-                            <fileset dir="target/${pom.artifactId}-${pom.version}.dir"/>
+                            <fileset dir="target/${project.artifactId}-${project.version}"/>
                         </copy>
                     </tasks>
                 </configuration>
