@@ -70,13 +70,13 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
 
     public boolean generateProperties(InstallData installData, PrintWriter printWriter)
     {
-        printWriter.println(InstallData.INSTALL_PATH + "=");
+        printWriter.println(JDKPathPanel.JDK_PATH + "=");
         return true;
     }
 
     public boolean run(InstallData installData, Properties properties)
     {
-        String strTargetPath = properties.getProperty(InstallData.INSTALL_PATH);
+        String strTargetPath = properties.getProperty(JDKPathPanel.JDK_PATH);
         if (strTargetPath == null || "".equals(strTargetPath.trim()))
         {
             System.err.println("Missing mandatory target path!");
@@ -109,10 +109,9 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
     {
         String minVersion = installData.getVariable("JDKPathPanel.minVersion");
         String maxVersion = installData.getVariable("JDKPathPanel.maxVersion");
-        String variableName = "JDKPath";
 
         String strPath;
-        String strDefaultPath = installData.getVariable(variableName);
+        String strDefaultPath = installData.getVariable(JDKPathPanel.JDK_PATH);
         if (strDefaultPath == null)
         {
             if (OsVersion.IS_OSX)
@@ -176,7 +175,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
             {
                 bKeepAsking = false;
             }
-            installData.setVariable(variableName, strPath);
+            installData.setVariable(JDKPathPanel.JDK_PATH, strPath);
         }
 
         return promptEndPanel(installData, console);

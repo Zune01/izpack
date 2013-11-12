@@ -63,7 +63,9 @@ import com.izforge.izpack.util.Platform;
 public class JDKPathPanel extends PathInputPanel implements HyperlinkListener
 {
 
-    private static final long serialVersionUID = 3257006553327810104L;
+	static final String JDK_PATH = "JDKPath";
+
+	private static final long serialVersionUID = 3257006553327810104L;
 
     public static final String[] testFiles = new String[]{"lib" + File.separator + "tools.jar"};
 
@@ -122,7 +124,7 @@ public class JDKPathPanel extends PathInputPanel implements HyperlinkListener
         }
         setMinVersion(installData.getVariable("JDKPathPanel.minVersion"));
         setMaxVersion(installData.getVariable("JDKPathPanel.maxVersion"));
-        setVariableName("JDKPath");
+        setVariableName(JDK_PATH);
     }
 
     @Override
