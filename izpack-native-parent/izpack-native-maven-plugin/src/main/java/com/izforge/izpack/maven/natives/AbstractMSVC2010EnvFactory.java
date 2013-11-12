@@ -184,6 +184,16 @@ public abstract class AbstractMSVC2010EnvFactory extends AbstractMSVCEnvFactory
             {
                 windowsSDKDir = new File(value);
             }
+            else
+            {
+            	value = RegQuery.getValue("REG_SZ", "HKLM\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows",
+                        "CurrentVersion");
+            	if (value != null)
+            	{
+            		value = RegQuery.getValue("REG_SZ", "HKLM\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows\\" + value,
+                            "InstallationFolder");
+            	}
+            }
         }
         return windowsSDKDir;
     }
