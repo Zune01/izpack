@@ -1,0 +1,199 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.codehaus.izpack:izpack-native-coioshelper:dll:5.0.0-rc2-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:native-maven-plugin is missing. @ line 22, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building IzPack native COIOSHelper module for win32 5.0.0-rc2-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ izpack-native-coioshelper ---
+[INFO] Deleting D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target
+[INFO] Deleting D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper (includes = [*.pdb, *.idb], excludes = [])
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ izpack-native-coioshelper ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:initialize (default-initialize) @ izpack-native-coioshelper ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:unzipinc (default-unzipinc) @ izpack-native-coioshelper ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:javah (default-javah) @ izpack-native-coioshelper ---
+[INFO] cmd.exe /X /C "javah -d D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\native\javah -classpath D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\classes;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-core\5.0.0-rc2-SNAPSHOT\izpack-core-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-util\5.0.0-rc2-SNAPSHOT\izpack-util-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-api\5.0.0-rc2-SNAPSHOT\izpack-api-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\apache\ant\ant\1.9.2\ant-1.9.2.jar;C:\Users\12008\.m2\repository\org\apache\ant\ant-launcher\1.9.2\ant-launcher-1.9.2.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-tools\5.0.0-rc2-SNAPSHOT\izpack-tools-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\picocontainer\picocontainer\2.14.1\picocontainer-2.14.1.jar;C:\Users\12008\.m2\repository\org\jdom\jdom2\2.0.5\jdom2-2.0.5.jar;C:\Users\12008\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar com.coi.tools.os.izpack.COIOSHelper com.coi.tools.os.win.RegistryImpl"
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:compile (default-compile) @ izpack-native-coioshelper ---
+[INFO] cmd.exe /X /C "cl.exe /D "_UNICODE" /D "UNICODE" /Zi /nologo /W3 /WX /O2 /Ob1 /D "NDEBUG" /D "WIN32" /D "_WINDLL" /D "_USRDLL" /D "_CRT_SECURE_NO_DEPRECATE" /EHsc /MT /GS /Gy "/IC:\JDK/include" "/IC:\JDK/include/win32" -ID:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src -ID:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\native\javah /FoD:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\objs\COIOSHelper.obj -c D:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src\COIOSHelper.cxx"
+COIOSHelper.cxx
+[INFO] cmd.exe /X /C "cl.exe /D "_UNICODE" /D "UNICODE" /Zi /nologo /W3 /WX /O2 /Ob1 /D "NDEBUG" /D "WIN32" /D "_WINDLL" /D "_USRDLL" /D "_CRT_SECURE_NO_DEPRECATE" /EHsc /MT /GS /Gy "/IC:\JDK/include" "/IC:\JDK/include/win32" -ID:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src -ID:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\native\javah /FoD:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\objs\RegistryImpl.obj -c D:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src\RegistryImpl.cxx"
+RegistryImpl.cxx
+[INFO] cmd.exe /X /C "cl.exe /D "_UNICODE" /D "UNICODE" /Zi /nologo /W3 /WX /O2 /Ob1 /D "NDEBUG" /D "WIN32" /D "_WINDLL" /D "_USRDLL" /D "_CRT_SECURE_NO_DEPRECATE" /EHsc /MT /GS /Gy "/IC:\JDK/include" "/IC:\JDK/include/win32" -ID:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src -ID:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\native\javah /FoD:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\objs\RegistryInternal.obj -c D:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src\RegistryInternal.cxx"
+RegistryInternal.cxx
+[INFO] cmd.exe /X /C "cl.exe /D "_UNICODE" /D "UNICODE" /Zi /nologo /W3 /WX /O2 /Ob1 /D "NDEBUG" /D "WIN32" /D "_WINDLL" /D "_USRDLL" /D "_CRT_SECURE_NO_DEPRECATE" /EHsc /MT /GS /Gy "/IC:\JDK/include" "/IC:\JDK/include/win32" -ID:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src -ID:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\native\javah /FoD:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\objs\WinLibEnv.obj -c D:\git_skrap\izpack\izpack-native-parent\src\main\native\COIOSHelper\src\WinLibEnv.cxx"
+WinLibEnv.cxx
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:link (default-link) @ izpack-native-coioshelper ---
+[INFO] cmd.exe /X /C "link.exe /INCREMENTAL:NO /DLL user32.lib advapi32.lib kernel32.lib /MACHINE:X86 /out:D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\izpack-native-coioshelper.dll target\objs\COIOSHelper.obj target\objs\RegistryImpl.obj target\objs\RegistryInternal.obj target\objs\WinLibEnv.obj"
+Microsoft (R) Incremental Linker Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+   Creating library D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\izpack-native-coioshelper.lib and object D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\izpack-native-coioshelper.exp
+COIOSHelper.obj : error LNK2019: unresolved external symbol __imp__FreeLibraryAndExitThread@8 referenced in function _Java_com_coi_tools_os_izpack_COIOSHelper_FreeLibrary@12
+COIOSHelper.obj : error LNK2019: unresolved external symbol __imp__GetModuleHandleW@4 referenced in function _Java_com_coi_tools_os_izpack_COIOSHelper_FreeLibrary@12
+LIBCMT.lib(tidtable.obj) : error LNK2001: unresolved external symbol __imp__GetModuleHandleW@4
+LIBCMT.lib(crt0dat.obj) : error LNK2001: unresolved external symbol __imp__GetModuleHandleW@4
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegCloseKey@4 referenced in function "unsigned char __cdecl regKeyExist(class WinLibEnv *,int,wchar_t const *)" (?regKeyExist@@YAEPAVWinLibEnv@@HPB_W@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegOpenKeyExW@20 referenced in function "unsigned char __cdecl regKeyExist(class WinLibEnv *,int,wchar_t const *)" (?regKeyExist@@YAEPAVWinLibEnv@@HPB_W@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegQueryInfoKeyW@48 referenced in function "void __cdecl determineCounts(class WinLibEnv *,int,wchar_t const *,unsigned long *,unsigned long *)" (?determineCounts@@YAXPAVWinLibEnv@@HPB_WPAK2@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegSetValueExW@24 referenced in function "void __cdecl setRegValue(class WinLibEnv *,int,wchar_t const *,wchar_t const *,long,unsigned char *,long)" (?setRegValue@@YAXPAVWinLibEnv@@HPB_W1JPAEJ@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegCreateKeyExW@36 referenced in function "void __cdecl createRegKey(class WinLibEnv *,int,wchar_t const *)" (?createRegKey@@YAXPAVWinLibEnv@@HPB_W@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegDeleteKeyW@8 referenced in function "void __cdecl deleteRegKey(class WinLibEnv *,int,wchar_t const *)" (?deleteRegKey@@YAXPAVWinLibEnv@@HPB_W@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegDeleteValueW@8 referenced in function "void __cdecl deleteRegValue(class WinLibEnv *,int,wchar_t const *,wchar_t const *)" (?deleteRegValue@@YAXPAVWinLibEnv@@HPB_W1@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegQueryValueExW@24 referenced in function "long __cdecl getRegValueType(class WinLibEnv *,int,wchar_t const *,wchar_t const *)" (?getRegValueType@@YAJPAVWinLibEnv@@HPB_W1@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegEnumKeyExW@32 referenced in function "wchar_t * __cdecl getSubkeyName(class WinLibEnv *,int,wchar_t const *,int)" (?getSubkeyName@@YAPA_WPAVWinLibEnv@@HPB_WH@Z)
+RegistryInternal.obj : error LNK2019: unresolved external symbol __imp__RegEnumValueW@32 referenced in function "wchar_t * __cdecl getValueName(class WinLibEnv *,int,wchar_t const *,int)" (?getValueName@@YAPA_WPAVWinLibEnv@@HPB_WH@Z)
+WinLibEnv.obj : error LNK2019: unresolved external symbol __imp__LocalFree@4 referenced in function "private: void __thiscall WinLibEnv::getOSMessage(void)" (?getOSMessage@WinLibEnv@@AAEXXZ)
+WinLibEnv.obj : error LNK2019: unresolved external symbol __imp__FormatMessageW@28 referenced in function "private: void __thiscall WinLibEnv::getOSMessage(void)" (?getOSMessage@WinLibEnv@@AAEXXZ)
+LIBCMT.lib(_trnsctrl_.obj) : error LNK2019: unresolved external symbol _RtlUnwind@16 referenced in function "void __stdcall _UnwindNestedFrames(struct EHRegistrationNode *,struct EHExceptionRecord *)" (?_UnwindNestedFrames@@YGXPAUEHRegistrationNode@@PAUEHExceptionRecord@@@Z)
+LIBCMT.lib(exsup.obj) : error LNK2001: unresolved external symbol _RtlUnwind@16
+LIBCMT.lib(exsup4.obj) : error LNK2001: unresolved external symbol _RtlUnwind@16
+LIBCMT.lib(crtmboxw.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(purevirt.obj) : error LNK2019: unresolved external symbol __imp__EncodePointer@4 referenced in function __purecall
+LIBCMT.lib(invarg.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(winsig.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(rand_s.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(cmiscdat.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(onexit.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(handler.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(tidtable.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(hooks.obj) : error LNK2001: unresolved external symbol __imp__EncodePointer@4
+LIBCMT.lib(rand_s.obj) : error LNK2019: unresolved external symbol __imp__DecodePointer@4 referenced in function _rand_s
+LIBCMT.lib(crtmboxw.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(purevirt.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(hooks.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(crt0dat.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(invarg.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(winsig.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(onexit.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(dllcrt0.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(handler.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(tidtable.obj) : error LNK2001: unresolved external symbol __imp__DecodePointer@4
+LIBCMT.lib(dllcrt0.obj) : error LNK2019: unresolved external symbol __imp__GetCurrentThreadId@0 referenced in function __CRT_INIT@12
+LIBCMT.lib(tidtable.obj) : error LNK2001: unresolved external symbol __imp__GetCurrentThreadId@0
+LIBCMT.lib(gs_support.obj) : error LNK2001: unresolved external symbol __imp__GetCurrentThreadId@0
+LIBCMT.lib(dllcrt0.obj) : error LNK2019: unresolved external symbol __imp__GetCommandLineA@0 referenced in function __CRT_INIT@12
+LIBCMT.lib(rand_s.obj) : error LNK2001: unresolved external symbol __imp__GetLastError@0
+LIBCMT.lib(inithelp.obj) : error LNK2001: unresolved external symbol __imp__GetLastError@0
+LIBCMT.lib(free.obj) : error LNK2019: unresolved external symbol __imp__GetLastError@0 referenced in function _free
+LIBCMT.lib(tidtable.obj) : error LNK2001: unresolved external symbol __imp__GetLastError@0
+LIBCMT.lib(realloc.obj) : error LNK2001: unresolved external symbol __imp__GetLastError@0
+LIBCMT.lib(winsig.obj) : error LNK2001: unresolved external symbol __imp__GetLastError@0
+LIBCMT.lib(free.obj) : error LNK2019: unresolved external symbol __imp__HeapFree@12 referenced in function _free
+LIBCMT.lib(malloc.obj) : error LNK2019: unresolved external symbol __imp__HeapAlloc@12 referenced in function __heap_alloc
+LIBCMT.lib(calloc_impl.obj) : error LNK2001: unresolved external symbol __imp__HeapAlloc@12
+LIBCMT.lib(throw.obj) : error LNK2019: unresolved external symbol __imp__RaiseException@16 referenced in function __CxxThrowException@8
+LIBCMT.lib(cpu_disp.obj) : error LNK2019: unresolved external symbol __imp__IsProcessorFeaturePresent@4 referenced in function ___sse2_available_init
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__TlsAlloc@0 referenced in function ___crtTlsAlloc@4
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__TlsGetValue@4 referenced in function ___fls_getvalue@4
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__TlsSetValue@8 referenced in function ___set_flsgetvalue
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__TlsFree@4 referenced in function __mtterm
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__InterlockedIncrement@4 referenced in function __initptd
+LIBCMT.lib(localref.obj) : error LNK2001: unresolved external symbol __imp__InterlockedIncrement@4
+LIBCMT.lib(mbctype.obj) : error LNK2001: unresolved external symbol __imp__InterlockedIncrement@4
+LIBCMT.lib(setlocal.obj) : error LNK2001: unresolved external symbol __imp__InterlockedIncrement@4
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__SetLastError@4 referenced in function __getptd_noexit
+LIBCMT.lib(initnum.obj) : error LNK2001: unresolved external symbol __imp__InterlockedDecrement@4
+LIBCMT.lib(initmon.obj) : error LNK2001: unresolved external symbol __imp__InterlockedDecrement@4
+LIBCMT.lib(setlocal.obj) : error LNK2001: unresolved external symbol __imp__InterlockedDecrement@4
+LIBCMT.lib(initctyp.obj) : error LNK2001: unresolved external symbol __imp__InterlockedDecrement@4
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__InterlockedDecrement@4 referenced in function __freefls@4
+LIBCMT.lib(localref.obj) : error LNK2001: unresolved external symbol __imp__InterlockedDecrement@4
+LIBCMT.lib(mbctype.obj) : error LNK2001: unresolved external symbol __imp__InterlockedDecrement@4
+LIBCMT.lib(inittime.obj) : error LNK2001: unresolved external symbol __imp__InterlockedDecrement@4
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__GetCurrentThread@0 referenced in function ___threadhandle
+LIBCMT.lib(tidtable.obj) : error LNK2019: unresolved external symbol __imp__GetProcAddress@8 referenced in function __mtinit
+LIBCMT.lib(crt0dat.obj) : error LNK2001: unresolved external symbol __imp__GetProcAddress@8
+LIBCMT.lib(rand_s.obj) : error LNK2001: unresolved external symbol __imp__GetProcAddress@8
+LIBCMT.lib(crtmboxw.obj) : error LNK2001: unresolved external symbol __imp__GetProcAddress@8
+LIBCMT.lib(gs_report.obj) : error LNK2019: unresolved external symbol __imp__TerminateProcess@8 referenced in function ___report_gsfailure
+LIBCMT.lib(invarg.obj) : error LNK2001: unresolved external symbol __imp__TerminateProcess@8
+LIBCMT.lib(gs_report.obj) : error LNK2019: unresolved external symbol __imp__GetCurrentProcess@0 referenced in function ___report_gsfailure
+LIBCMT.lib(invarg.obj) : error LNK2001: unresolved external symbol __imp__GetCurrentProcess@0
+LIBCMT.lib(gs_report.obj) : error LNK2019: unresolved external symbol __imp__UnhandledExceptionFilter@4 referenced in function ___report_gsfailure
+LIBCMT.lib(invarg.obj) : error LNK2001: unresolved external symbol __imp__UnhandledExceptionFilter@4
+LIBCMT.lib(gs_report.obj) : error LNK2019: unresolved external symbol __imp__SetUnhandledExceptionFilter@4 referenced in function ___report_gsfailure
+LIBCMT.lib(invarg.obj) : error LNK2001: unresolved external symbol __imp__SetUnhandledExceptionFilter@4
+LIBCMT.lib(gs_report.obj) : error LNK2019: unresolved external symbol __imp__IsDebuggerPresent@0 referenced in function ___report_gsfailure
+LIBCMT.lib(invarg.obj) : error LNK2001: unresolved external symbol __imp__IsDebuggerPresent@0
+LIBCMT.lib(crtheap.obj) : error LNK2019: unresolved external symbol __imp__Sleep@4 referenced in function _wait_a_bit
+LIBCMT.lib(msize.obj) : error LNK2019: unresolved external symbol __imp__HeapSize@12 referenced in function __msize
+LIBCMT.lib(crt0dat.obj) : error LNK2019: unresolved external symbol __imp__ExitProcess@4 referenced in function ___crtExitProcess
+LIBCMT.lib(ioinit.obj) : error LNK2019: unresolved external symbol __imp__SetHandleCount@4 referenced in function __ioinit
+LIBCMT.lib(ioinit.obj) : error LNK2019: unresolved external symbol __imp__GetStdHandle@4 referenced in function __ioinit
+LIBCMT.lib(crt0msg.obj) : error LNK2001: unresolved external symbol __imp__GetStdHandle@4
+LIBCMT.lib(ioinit.obj) : error LNK2019: unresolved external symbol __imp__InitializeCriticalSectionAndSpinCount@8 referenced in function __ioinit
+LIBCMT.lib(mlock.obj) : error LNK2001: unresolved external symbol __imp__InitializeCriticalSectionAndSpinCount@8
+LIBCMT.lib(ioinit.obj) : error LNK2019: unresolved external symbol __imp__GetFileType@4 referenced in function __ioinit
+LIBCMT.lib(ioinit.obj) : error LNK2019: unresolved external symbol __imp__GetStartupInfoW@4 referenced in function __ioinit
+LIBCMT.lib(ioinit.obj) : error LNK2019: unresolved external symbol __imp__DeleteCriticalSection@4 referenced in function __ioterm
+LIBCMT.lib(mlock.obj) : error LNK2001: unresolved external symbol __imp__DeleteCriticalSection@4
+LIBCMT.lib(stdargv.obj) : error LNK2019: unresolved external symbol __imp__GetModuleFileNameA@12 referenced in function __setargv
+LIBCMT.lib(a_env.obj) : error LNK2019: unresolved external symbol __imp__FreeEnvironmentStringsW@4 referenced in function ___crtGetEnvironmentStringsA
+LIBCMT.lib(a_env.obj) : error LNK2019: unresolved external symbol __imp__WideCharToMultiByte@32 referenced in function ___crtGetEnvironmentStringsA
+LIBCMT.lib(a_map.obj) : error LNK2001: unresolved external symbol __imp__WideCharToMultiByte@32
+LIBCMT.lib(a_loc.obj) : error LNK2001: unresolved external symbol __imp__WideCharToMultiByte@32
+LIBCMT.lib(a_env.obj) : error LNK2019: unresolved external symbol __imp__GetEnvironmentStringsW@0 referenced in function ___crtGetEnvironmentStringsA
+LIBCMT.lib(heapinit.obj) : error LNK2019: unresolved external symbol __imp__HeapCreate@12 referenced in function __heap_init
+LIBCMT.lib(heapinit.obj) : error LNK2019: unresolved external symbol __imp__HeapDestroy@4 referenced in function __heap_term
+LIBCMT.lib(gs_support.obj) : error LNK2019: unresolved external symbol __imp__QueryPerformanceCounter@4 referenced in function ___security_init_cookie
+LIBCMT.lib(gs_support.obj) : error LNK2019: unresolved external symbol __imp__GetTickCount@0 referenced in function ___security_init_cookie
+LIBCMT.lib(gs_support.obj) : error LNK2019: unresolved external symbol __imp__GetCurrentProcessId@0 referenced in function ___security_init_cookie
+LIBCMT.lib(gs_support.obj) : error LNK2019: unresolved external symbol __imp__GetSystemTimeAsFileTime@4 referenced in function ___security_init_cookie
+LIBCMT.lib(crt0msg.obj) : error LNK2019: unresolved external symbol __imp__WriteFile@20 referenced in function __NMSG_WRITE
+LIBCMT.lib(crt0msg.obj) : error LNK2019: unresolved external symbol __imp__GetModuleFileNameW@12 referenced in function __NMSG_WRITE
+LIBCMT.lib(mlock.obj) : error LNK2019: unresolved external symbol __imp__LeaveCriticalSection@4 referenced in function __unlock
+LIBCMT.lib(mlock.obj) : error LNK2019: unresolved external symbol __imp__FatalAppExitA@8 referenced in function __lockerr_exit
+LIBCMT.lib(mlock.obj) : error LNK2019: unresolved external symbol __imp__EnterCriticalSection@4 referenced in function __lock
+LIBCMT.lib(mbctype.obj) : error LNK2019: unresolved external symbol __imp__GetCPInfo@8 referenced in function "void __cdecl setSBUpLow(struct threadmbcinfostruct *)" (?setSBUpLow@@YAXPAUthreadmbcinfostruct@@@Z)
+LIBCMT.lib(initctyp.obj) : error LNK2001: unresolved external symbol __imp__GetCPInfo@8
+LIBCMT.lib(mbctype.obj) : error LNK2019: unresolved external symbol __imp__GetACP@0 referenced in function "int __cdecl getSystemCP(int)" (?getSystemCP@@YAHH@Z)
+LIBCMT.lib(getqloc.obj) : error LNK2001: unresolved external symbol __imp__GetACP@0
+LIBCMT.lib(mbctype.obj) : error LNK2019: unresolved external symbol __imp__GetOEMCP@0 referenced in function "int __cdecl getSystemCP(int)" (?getSystemCP@@YAHH@Z)
+LIBCMT.lib(mbctype.obj) : error LNK2019: unresolved external symbol __imp__IsValidCodePage@4 referenced in function __setmbcp_nolock
+LIBCMT.lib(getqloc.obj) : error LNK2001: unresolved external symbol __imp__IsValidCodePage@4
+LIBCMT.lib(realloc.obj) : error LNK2019: unresolved external symbol __imp__HeapReAlloc@16 referenced in function _realloc
+LIBCMT.lib(winsig.obj) : error LNK2019: unresolved external symbol __imp__SetConsoleCtrlHandler@8 referenced in function _signal
+LIBCMT.lib(rand_s.obj) : error LNK2019: unresolved external symbol __imp__FreeLibrary@4 referenced in function _rand_s
+LIBCMT.lib(rand_s.obj) : error LNK2019: unresolved external symbol __imp__InterlockedExchange@8 referenced in function _rand_s
+LIBCMT.lib(rand_s.obj) : error LNK2019: unresolved external symbol __imp__LoadLibraryW@4 referenced in function _rand_s
+LIBCMT.lib(crtmboxw.obj) : error LNK2001: unresolved external symbol __imp__LoadLibraryW@4
+LIBCMT.lib(inithelp.obj) : error LNK2019: unresolved external symbol __imp__GetLocaleInfoW@16 referenced in function ___getlocaleinfo
+LIBCMT.lib(a_loc.obj) : error LNK2001: unresolved external symbol __imp__GetLocaleInfoW@16
+LIBCMT.lib(getqloc.obj) : error LNK2001: unresolved external symbol __imp__GetLocaleInfoW@16
+LIBCMT.lib(a_map.obj) : error LNK2019: unresolved external symbol __imp__LCMapStringW@24 referenced in function "int __cdecl __crtLCMapStringA_stat(struct localeinfo_struct *,unsigned long,unsigned long,char const *,int,char *,int,int,int)" (?__crtLCMapStringA_stat@@YAHPAUlocaleinfo_struct@@KKPBDHPADHHH@Z)
+LIBCMT.lib(a_map.obj) : error LNK2019: unresolved external symbol __imp__MultiByteToWideChar@24 referenced in function "int __cdecl __crtLCMapStringA_stat(struct localeinfo_struct *,unsigned long,unsigned long,char const *,int,char *,int,int,int)" (?__crtLCMapStringA_stat@@YAHPAUlocaleinfo_struct@@KKPBDHPADHHH@Z)
+LIBCMT.lib(a_str.obj) : error LNK2001: unresolved external symbol __imp__MultiByteToWideChar@24
+LIBCMT.lib(a_str.obj) : error LNK2019: unresolved external symbol __imp__GetStringTypeW@16 referenced in function "int __cdecl __crtGetStringTypeA_stat(struct localeinfo_struct *,unsigned long,char const *,int,unsigned short *,int,int,int)" (?__crtGetStringTypeA_stat@@YAHPAUlocaleinfo_struct@@KPBDHPAGHHH@Z)
+LIBCMT.lib(iswctype.obj) : error LNK2001: unresolved external symbol __imp__GetStringTypeW@16
+LIBCMT.lib(getqloc.obj) : error LNK2019: unresolved external symbol __imp__GetUserDefaultLCID@0 referenced in function _GetLcidFromDefault
+LIBCMT.lib(getqloc.obj) : error LNK2019: unresolved external symbol __imp__GetLocaleInfoA@16 referenced in function _CountryEnumProc@4
+LIBCMT.lib(getqloc.obj) : error LNK2019: unresolved external symbol __imp__EnumSystemLocalesA@8 referenced in function _GetLcidFromCountry
+LIBCMT.lib(getqloc.obj) : error LNK2019: unresolved external symbol __imp__IsValidLocale@8 referenced in function ___get_qualified_locale
+D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper\target\izpack-native-coioshelper.dll : fatal error LNK1120: 79 unresolved externals
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.515s
+[INFO] Finished at: Fri Nov 08 13:44:10 CET 2013
+[INFO] Final Memory: 9M/150M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:native-maven-plugin:1.0-alpha-7:link (default-link) on project izpack-native-coioshelper: Error executing command line. Exit code:1120 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

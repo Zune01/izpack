@@ -1,0 +1,90 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.codehaus.izpack:izpack-native-coioshelper-x64:dll:5.0.0-rc2-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:native-maven-plugin is missing. @ line 22, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building IzPack native COIOSHelper module for win64 5.0.0-rc2-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:initialize (default-initialize) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:unzipinc (default-unzipinc) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:javah (default-javah) @ izpack-native-coioshelper-x64 ---
+[INFO] cmd.exe /X /C "javah -d D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\native\javah -classpath D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\classes;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-core\5.0.0-rc2-SNAPSHOT\izpack-core-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-util\5.0.0-rc2-SNAPSHOT\izpack-util-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-api\5.0.0-rc2-SNAPSHOT\izpack-api-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\apache\ant\ant\1.9.2\ant-1.9.2.jar;C:\Users\12008\.m2\repository\org\apache\ant\ant-launcher\1.9.2\ant-launcher-1.9.2.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-tools\5.0.0-rc2-SNAPSHOT\izpack-tools-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\picocontainer\picocontainer\2.14.1\picocontainer-2.14.1.jar;C:\Users\12008\.m2\repository\org\jdom\jdom2\2.0.5\jdom2-2.0.5.jar;C:\Users\12008\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar com.coi.tools.os.izpack.COIOSHelper com.coi.tools.os.win.RegistryImpl"
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:compile (default-compile) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:link (default-link) @ izpack-native-coioshelper-x64 ---
+[INFO] cmd.exe /X /C "link.exe /INCREMENTAL:NO /DLL user32.lib advapi32.lib kernel32.lib /MACHINE:X64 /out:D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\izpack-native-coioshelper-x64.dll target\objs\COIOSHelper.obj target\objs\RegistryImpl.obj target\objs\RegistryInternal.obj target\objs\WinLibEnv.obj"
+Microsoft (R) Incremental Linker Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+   Creating library D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\izpack-native-coioshelper-x64.lib and object D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\izpack-native-coioshelper-x64.exp
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:manifest (default-manifest) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ izpack-native-coioshelper-x64 ---
+[debug] execute contextualize
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.4:testCompile (default-testCompile) @ izpack-native-coioshelper-x64 ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.7.2:test (default-test) @ izpack-native-coioshelper-x64 ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+There are no tests to run.
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:inczip (default-inczip) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] >>> maven-source-plugin:2.1.2:jar (attach-sources) @ izpack-native-coioshelper-x64 >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:initialize (default-initialize) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:unzipinc (default-unzipinc) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- native-maven-plugin:1.0-alpha-7:javah (default-javah) @ izpack-native-coioshelper-x64 ---
+[INFO] cmd.exe /X /C "javah -d D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\native\javah -classpath D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\classes;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-core\5.0.0-rc2-SNAPSHOT\izpack-core-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-util\5.0.0-rc2-SNAPSHOT\izpack-util-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-api\5.0.0-rc2-SNAPSHOT\izpack-api-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\apache\ant\ant\1.9.2\ant-1.9.2.jar;C:\Users\12008\.m2\repository\org\apache\ant\ant-launcher\1.9.2\ant-launcher-1.9.2.jar;C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-tools\5.0.0-rc2-SNAPSHOT\izpack-tools-5.0.0-rc2-SNAPSHOT.jar;C:\Users\12008\.m2\repository\org\picocontainer\picocontainer\2.14.1\picocontainer-2.14.1.jar;C:\Users\12008\.m2\repository\org\jdom\jdom2\2.0.5\jdom2-2.0.5.jar;C:\Users\12008\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar com.coi.tools.os.izpack.COIOSHelper com.coi.tools.os.win.RegistryImpl"
+[INFO] 
+[INFO] <<< maven-source-plugin:2.1.2:jar (attach-sources) @ izpack-native-coioshelper-x64 <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.1.2:jar (attach-sources) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.1:test-jar (default) @ izpack-native-coioshelper-x64 ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] 
+[INFO] --- maven-site-plugin:3.0-beta-3:attach-descriptor (attach-descriptor) @ izpack-native-coioshelper-x64 ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.1:install (default-install) @ izpack-native-coioshelper-x64 ---
+[INFO] Installing D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\izpack-native-coioshelper-x64.dll to C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-native-coioshelper-x64\5.0.0-rc2-SNAPSHOT\izpack-native-coioshelper-x64-5.0.0-rc2-SNAPSHOT.dll
+[INFO] Installing D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\pom.xml to C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-native-coioshelper-x64\5.0.0-rc2-SNAPSHOT\izpack-native-coioshelper-x64-5.0.0-rc2-SNAPSHOT.pom
+[INFO] Installing D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\izpack-native-coioshelper-x64-sources.jar to C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-native-coioshelper-x64\5.0.0-rc2-SNAPSHOT\izpack-native-coioshelper-x64-5.0.0-rc2-SNAPSHOT-sources.jar
+[INFO] Installing D:\git_skrap\izpack\izpack-native-parent\izpack-native-coioshelper-x64\target\izpack-native-coioshelper-x64-tests.jar to C:\Users\12008\.m2\repository\org\codehaus\izpack\izpack-native-coioshelper-x64\5.0.0-rc2-SNAPSHOT\izpack-native-coioshelper-x64-5.0.0-rc2-SNAPSHOT-tests.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.677s
+[INFO] Finished at: Fri Nov 08 13:33:46 CET 2013
+[INFO] Final Memory: 17M/218M
+[INFO] ------------------------------------------------------------------------
