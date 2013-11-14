@@ -10,7 +10,7 @@ import com.izforge.izpack.util.config.base.Registry.Key;
 
 public class RegTest {
 
-	@Test
+//	@Test
 	public void testConstructorWithRegistryKey() {
 		if( OsVersion.IS_WINDOWS ) {
 			try {
