@@ -298,10 +298,10 @@ public class Packager extends PackagerBase
         packerProperties.put(Pack200.Packer.SEGMENT_LIMIT, "-1");
         packerProperties.put(Pack200.Packer.KEEP_FILE_ORDER, Pack200.Packer.FALSE);
         packerProperties.put(Pack200.Packer.DEFLATE_HINT, Pack200.Packer.FALSE);
-        packerProperties.put(Pack200.Packer.MODIFICATION_TIME, Pack200.Packer.LATEST);
-        packerProperties.put(Pack200.Packer.CODE_ATTRIBUTE_PFX + "LineNumberTable", Pack200.Packer.STRIP);
-        packerProperties.put(Pack200.Packer.CODE_ATTRIBUTE_PFX + "LocalVariableTable", Pack200.Packer.STRIP);
-        packerProperties.put(Pack200.Packer.CODE_ATTRIBUTE_PFX + "SourceFile", Pack200.Packer.STRIP);
+//        packerProperties.put(Pack200.Packer.MODIFICATION_TIME, Pack200.Packer.LATEST);
+//        packerProperties.put(Pack200.Packer.CODE_ATTRIBUTE_PFX + "LineNumberTable", Pack200.Packer.STRIP);
+//        packerProperties.put(Pack200.Packer.CODE_ATTRIBUTE_PFX + "LocalVariableTable", Pack200.Packer.STRIP);
+//        packerProperties.put(Pack200.Packer.CODE_ATTRIBUTE_PFX + "SourceFile", Pack200.Packer.STRIP);
         return packer;
     }
 
