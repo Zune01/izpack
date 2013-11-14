@@ -79,7 +79,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
         String strTargetPath = properties.getProperty(JDKPathPanel.JDK_PATH);
         if (strTargetPath == null || "".equals(strTargetPath.trim()))
         {
-            System.err.println("Missing mandatory target path!");
+            System.err.println("Missing mandatory JDK path!");
             return false;
         }
         else
@@ -92,7 +92,17 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
             {
                 // ignore
             }
-            installData.setInstallPath(strTargetPath);
+            // Validate
+            String minVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
+            String maxVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
+            Platform platform = installData.getPlatform();
+            
+            if (!pathIsValid(strTargetPath) || !verifyVersion(minVersion, maxVersion, strTargetPath, platform)) {
+            	System.err.println("The specified JDKPath is not a JDK");
+            	return false;
+            }
+            
+            installData.setVariable(JDKPathPanel.JDK_PATH, strTargetPath);
             return true;
         }
     }
@@ -107,8 +117,8 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
     @Override
     public boolean run(InstallData installData, Console console)
     {
-        String minVersion = installData.getVariable("JDKPathPanel.minVersion");
-        String maxVersion = installData.getVariable("JDKPathPanel.maxVersion");
+        String minVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
+        String maxVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
 
         String strPath;
         String strDefaultPath = installData.getVariable(JDKPathPanel.JDK_PATH);

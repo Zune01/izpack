@@ -29,6 +29,7 @@ import com.izforge.izpack.installer.panel.PanelView;
 import com.izforge.izpack.util.Console;
 import com.izforge.izpack.util.PlatformModelMatcher;
 
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -49,7 +50,6 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
     private final AutomatedInstallData automatedInstallData;
     private final PlatformModelMatcher matcher;
 
-    @SuppressWarnings("UnusedDeclaration")
     public InstallationGroupConsolePanel(PanelView<Console> panel, Prompt prompt, AutomatedInstallData automatedInstallData, PlatformModelMatcher matcher)
     {
         super(panel);
@@ -59,10 +59,30 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
     }
 
     @Override
+    public boolean generateProperties(InstallData installData,
+    		PrintWriter printWriter) {
+    	printWriter.println(InstallationGroupPanel.INSTALL_GROUP + "=");
+    	return true;
+    }
+    
+    @Override
     public boolean run(InstallData installData, Properties properties)
     {
-        //scripted run - no interaction
-        return true;
+        Map<String, GroupData> installGroups = InstallationGroups.getInstallGroups(automatedInstallData);
+        String selectedGroup = properties.getProperty(InstallationGroupPanel.INSTALL_GROUP);
+        if (selectedGroup == null || selectedGroup.trim().isEmpty()) {
+        	System.err.println("Missing mandatory installation group");
+        	return false;
+        }
+        GroupData selected = installGroups.get(selectedGroup);
+        if (selected != null) {
+            this.automatedInstallData.setVariable(InstallationGroupPanel.INSTALL_GROUP, selected.name);
+            InstallationGroupPanel.removeUnusedPacks(selected, automatedInstallData);
+            return true;
+        } else {
+        	System.err.println("Installation group '" + selectedGroup + "' does not exist");
+        	return false;
+        }
     }
 
     @Override
@@ -95,39 +115,13 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
             selected = selectGroup(sortedGroups);
         }
 
-        this.automatedInstallData.setVariable("INSTALL_GROUP", selected.name);
-        logger.fine("Added variable INSTALL_GROUP=" + selected.name);
+        this.automatedInstallData.setVariable(InstallationGroupPanel.INSTALL_GROUP, selected.name);
+        logger.fine("Added variable " + InstallationGroupPanel.INSTALL_GROUP + "=" + selected.name);
 
-        setSelectedPacksBySelectedGroup(selected);
+        InstallationGroupPanel.removeUnusedPacks(selected, automatedInstallData);
 
         out(Prompt.Type.INFORMATION, DONE);
         return promptEndPanel(installData, console);
-    }
-
-    protected void setSelectedPacksBySelectedGroup(GroupData selected)
-    {
-        logger.fine("data=" + selected.name);
-
-        // Now remove the packs not in groupPackNames
-        Iterator<Pack> iter = automatedInstallData.getAvailablePacks().iterator();
-        while (iter.hasNext())
-        {
-            Pack pack = iter.next();
-
-            //reverse dependencies must be reset in case the user is going
-            //back and forth between the group selection panel and the packs selection panel
-            pack.setDependants(null);
-
-            if (!selected.packNames.contains(pack.getName()))
-            {
-                iter.remove();
-                logger.fine("Removed available pack: " + pack.getName());
-            }
-        }
-
-        this.automatedInstallData.getSelectedPacks().clear();
-        this.automatedInstallData.getSelectedPacks().addAll(this.automatedInstallData.getAvailablePacks());
-
     }
 
     private GroupData selectGroup(List<GroupData> options)

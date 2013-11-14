@@ -56,6 +56,7 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 import com.izforge.izpack.api.adaptator.IXMLElement;
+import com.izforge.izpack.api.data.AutomatedInstallData;
 import com.izforge.izpack.api.data.Pack;
 import com.izforge.izpack.api.data.Panel;
 import com.izforge.izpack.api.handler.AbstractUIHandler;
@@ -100,6 +101,8 @@ public class InstallationGroupPanel extends IzPanel
     private JTable groupsTable;
     private GroupData[] rows;
     private int selectedGroup = -1;
+
+	static final String INSTALL_GROUP = "INSTALL_GROUP";
 
 
     /**
@@ -220,13 +223,12 @@ public class InstallationGroupPanel extends IzPanel
     @Override
     public void panelDeactivate()
     {
-
         logger.fine("selectedGroup=" + selectedGroup);
         if (selectedGroup >= 0)
         {
-            removeUnusedPacks();
-            GroupData group = this.rows[selectedGroup];
-            this.installData.setVariable("INSTALL_GROUP", group.name);
+        	GroupData group = this.rows[selectedGroup];
+            removeUnusedPacks(group, this.installData);
+            this.installData.setVariable(INSTALL_GROUP, group.name);
             logger.fine("Added variable INSTALL_GROUP=" + group.name);
         }
     }
@@ -337,13 +339,12 @@ public class InstallationGroupPanel extends IzPanel
         add(groupScrollPane, gridBagConstraints);
     }
 
-    protected void removeUnusedPacks()
+    static protected void removeUnusedPacks(GroupData data, AutomatedInstallData installData)
     {
-        GroupData data = rows[selectedGroup];
         logger.fine("data=" + data.name);
 
         // Now remove the packs not in groupPackNames
-        Iterator<Pack> iter = this.installData.getAvailablePacks().iterator();
+        Iterator<Pack> iter = installData.getAvailablePacks().iterator();
         while (iter.hasNext())
         {
             Pack pack = iter.next();
@@ -359,18 +360,18 @@ public class InstallationGroupPanel extends IzPanel
             }
         }
 
-        this.installData.getSelectedPacks().clear();
-        if (!"no".equals(this.installData.getVariable("InstallationGroupPanel.selectPacks")))
+        installData.getSelectedPacks().clear();
+        if (!"no".equals(installData.getVariable("InstallationGroupPanel.selectPacks")))
         {
-            this.installData.getSelectedPacks().addAll(this.installData.getAvailablePacks());
+            installData.getSelectedPacks().addAll(installData.getAvailablePacks());
         }
         else
         {
-            for (Pack availablePack : this.installData.getAvailablePacks())
+            for (Pack availablePack : installData.getAvailablePacks())
             {
                 if (availablePack.isPreselected())
                 {
-                    this.installData.getSelectedPacks().add(availablePack);
+                    installData.getSelectedPacks().add(availablePack);
                 }
             }
         }
@@ -654,67 +655,6 @@ public class InstallationGroupPanel extends IzPanel
             count++;
         }
         return model;
-    }
-
-    protected static class GroupData
-    {
-        static final long ONEK = 1024;
-        static final long ONEM = 1024 * 1024;
-        static final long ONEG = 1024 * 1024 * 1024;
-
-        String name;
-        String description;
-        String sortKey;
-        long size;
-        HashSet<String> packNames = new HashSet<String>();
-
-        GroupData(String name, String description, String sortKey)
-        {
-            this.name = name;
-            this.description = description;
-            this.sortKey = sortKey;
-        }
-
-        String getSizeString()
-        {
-            String s;
-            if (size < ONEK)
-            {
-                s = size + " bytes";
-            }
-            else if (size < ONEM)
-            {
-                s = size / ONEK + " KB";
-            }
-            else if (size < ONEG)
-            {
-                s = size / ONEM + " MB";
-            }
-            else
-            {
-                s = size / ONEG + " GB";
-            }
-            return s;
-        }
-
-        @Override
-        public String toString()
-        {
-            StringBuffer tmp = new StringBuffer("GroupData(");
-            tmp.append(name);
-            tmp.append("){description=");
-            tmp.append(description);
-            tmp.append(", sortKey=");
-            tmp.append(sortKey);
-            tmp.append(", size=");
-            tmp.append(size);
-            tmp.append(", sizeString=");
-            tmp.append(getSizeString());
-            tmp.append(", packNames=");
-            tmp.append(packNames);
-            tmp.append("}");
-            return tmp.toString();
-        }
     }
 
 }

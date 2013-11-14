@@ -30,7 +30,7 @@ import com.izforge.izpack.api.adaptator.impl.XMLElementImpl;
 import com.izforge.izpack.api.data.InstallData;
 import com.izforge.izpack.api.data.Pack;
 import com.izforge.izpack.installer.automation.PanelAutomation;
-import com.izforge.izpack.panels.installationgroup.InstallationGroupPanel.GroupData;
+import com.izforge.izpack.panels.installationgroup.GroupData;
 
 /**
  * An automation helper for the InstallationGroupPanel
