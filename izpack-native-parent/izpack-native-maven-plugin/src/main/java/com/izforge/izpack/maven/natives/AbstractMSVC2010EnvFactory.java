@@ -180,19 +180,19 @@ public abstract class AbstractMSVC2010EnvFactory extends AbstractMSVCEnvFactory
             // RegQuery doesn't handle multiple returned keys.
             String value = RegQuery.getValue("REG_SZ", "HKLM\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows",
                     "CurrentInstallFolder");
-            if (value != null)
+            if (value == null)
             {
-                windowsSDKDir = new File(value);
-            }
-            else
-            {
-            	value = RegQuery.getValue("REG_SZ", "HKLM\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows",
+            	String keyValue = RegQuery.getValue("REG_SZ", "HKLM\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows",
                         "CurrentVersion");
-            	if (value != null)
+            	if (keyValue != null)
             	{
-            		value = RegQuery.getValue("REG_SZ", "HKLM\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows\\" + value,
+            		value = RegQuery.getValue("REG_SZ", "HKLM\\SOFTWARE\\Microsoft\\Microsoft SDKs\\Windows\\" + keyValue,
                             "InstallationFolder");
             	}
+            }
+            if (value != null)
+            {
+            	windowsSDKDir = new File(value);            			
             }
         }
         return windowsSDKDir;
