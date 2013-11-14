@@ -318,7 +318,7 @@
     <!--                                                                                                        -->
     <xs:complexType name="panelsType">
         <xs:sequence>
-            <xs:element name="panel" type="panelType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="panel" type="panelType" maxOccurs="unbounded" minOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -408,6 +408,7 @@
         <xs:attribute name="preselected" type="types:yesNoTrueFalseType" use="optional"/>
         <xs:attribute name="loose" type="xs:boolean" use="optional"/>
         <xs:attribute name="condition" type="xs:string" use="optional"/>
+        <xs:attribute name="installGroups" type="xs:string" use="optional"/>
     </xs:complexType>
 
 
