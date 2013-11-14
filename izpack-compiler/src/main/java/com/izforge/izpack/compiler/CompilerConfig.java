@@ -1375,7 +1375,7 @@ public class CompilerConfig extends Thread
 
         // Now checked the loaded XML file for basic syntax
         // We check it
-        if (!"installation".equalsIgnoreCase(refXMLData.getName()))
+        if (!"installation".equalsIgnoreCase(refXMLData.getElement().getLocalName()))
         {
             assertionHelper.parseError(refXMLData, "this is not an IzPack XML installation file");
         }
