@@ -27,8 +27,8 @@ import java.util.List;
 import com.izforge.izpack.api.exception.NativeLibException;
 
 /**
- * System dependent helper for MS Windows registry handling. This class is only vaild on Windows. It
- * declares naitve methods which are implemented in COIOSHelper.dll. The native methods uses the
+ * System dependent helper for MS Windows registry handling. This class is only valid on Windows. It
+ * declares native methods which are implemented in COIOSHelper.dll. The native methods uses the
  * classes RegDataContainer and AccessControlList as in and output. Do not change the getter and
  * setter methods of them. Do not try to implement a get or setValueACL because it will be nonsense.
  * In the registry only keys have a ACL. not values.

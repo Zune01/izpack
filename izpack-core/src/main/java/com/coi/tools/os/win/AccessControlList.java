@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 /**
  * Data container for access control lists used by the registry stuff in the java and in the native
- * part. DO NOT CHANGE METHODE SIGNATURES etc. without addapt the native methods
+ * part. DO NOT CHANGE METHODE SIGNATURES etc. without adapting the native methods
  * RegistryImpl.modifyKeyACL and RegistryImpl.getKeyACL.
  *
  * @author Klaus Bartz
