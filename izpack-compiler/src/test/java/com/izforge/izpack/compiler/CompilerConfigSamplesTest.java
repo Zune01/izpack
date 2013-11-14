@@ -70,6 +70,18 @@ public class CompilerConfigSamplesTest
     }
 
     @Test
+    @InstallFile("samples/izpack_master.xml")
+    public void installerShouldHandleRefpack() throws Exception
+    {
+        compilerConfig.executeCompiler();
+        jar = testContainer.getComponent(JarFile.class);
+        assertThat((ZipFile)jar, ZipMatcher.isZipContainingFiles(
+                "com/izforge/izpack/panels/checkedhello/CheckedHelloPanel.class",
+                "resources/vars",
+                "com/izforge/izpack/img/JFrameIcon.png"));
+    }
+
+    @Test
     @InstallFile("samples/silverpeas/silverpeas.xml")
     public void installerShouldMergeProcessPanelCorrectly() throws Exception
     {
