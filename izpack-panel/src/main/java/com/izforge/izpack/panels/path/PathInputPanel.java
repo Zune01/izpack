@@ -57,6 +57,8 @@ public class PathInputPanel extends IzPanel implements ActionListener
      * Flag whether the choosen path must exist or not
      */
     protected boolean mustExist = false;
+    
+    protected boolean reportErrorInUI = true;
 
     /**
      * Files which should be exist
@@ -387,7 +389,6 @@ public class PathInputPanel extends IzPanel implements ActionListener
 
     /**
      * Determines if required files exist relative to the specified path
-     *
      * @return {@code true} if no files are required, or they exist
      */
     protected boolean checkRequiredFilesExist(String path)
@@ -401,7 +402,10 @@ public class PathInputPanel extends IzPanel implements ActionListener
             File file = new File(path, existFile).getAbsoluteFile();
             if (!file.exists())
             {
-                emitError(getString("installer.error"), getString(getI18nStringForClass("notValid", "PathInputPanel")));
+            	if (reportErrorInUI) 
+            	{
+            		emitError(getString("installer.error"), getString(getI18nStringForClass("notValid", "PathInputPanel")));
+            	}
                 return false;
             }
         }
@@ -461,6 +465,4 @@ public class PathInputPanel extends IzPanel implements ActionListener
     {
         return checkRequiredFilesExist(getPath());
     }
-
-
 }

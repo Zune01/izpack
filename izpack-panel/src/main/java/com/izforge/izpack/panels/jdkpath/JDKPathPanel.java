@@ -127,6 +127,7 @@ public class JDKPathPanel extends PathInputPanel implements HyperlinkListener
         setMinVersion(installData.getVariable(JDK_PATH_PANEL_MIN_VERSION));
         setMaxVersion(installData.getVariable(JDK_PATH_PANEL_MAX_VERSION));
         setVariableName(JDK_PATH);
+        reportErrorInUI = false;
     }
 
     @Override
