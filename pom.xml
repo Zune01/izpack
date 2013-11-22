@@ -331,7 +331,26 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <nexusBaseUrl>http://sestvwrep01.infor.com/content</nexusBaseUrl>
+    <nexusReleaseId>linkoping-release</nexusReleaseId>
+    <nexusReleaseUrl>${nexusBaseUrl}/repositories/releases/</nexusReleaseUrl>
+    <nexusSnapshotId>linkoping-snapshot</nexusSnapshotId>
+    <nexusSnapshotUrl>${nexusBaseUrl}/repositories/snapshots/</nexusSnapshotUrl>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <scmUrl>scm:svn:http://sestvwrep01.infor.com:8080/svn</scmUrl>
+  </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>${nexusReleaseId}</id>
+      <url>${nexusReleaseUrl}</url>
+    </repository>
+    <snapshotRepository>
+      <id>${nexusSnapshotId}</id>
+      <url>${nexusSnapshotUrl}</url>
+    </snapshotRepository>
+  </distributionManagement>
 
     <build>
         <plugins>
@@ -745,13 +764,7 @@
         <system>jira</system>
         <url>http://jira.codehaus.org/browse/IZPACK</url>
     </issueManagement>
-
-    <distributionManagement>
-        <site>
-            <id>codehaus.org</id>
-            <url>dav:https://dav.codehaus.org/izpack/</url>
-        </site>
-    </distributionManagement>
-
+    
+    
 </project>
 
