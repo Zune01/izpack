@@ -526,13 +526,13 @@ public class RulesEngineImpl implements RulesEngine
         createPlatformCondition("izpack.windowsinstall.7", platform, Platforms.WINDOWS_7);
         createPlatformCondition("izpack.windowsinstall.8", platform, Platforms.WINDOWS_8);
         createPlatformCondition("izpack.linuxinstall", platform, Platforms.LINUX);
-        createPlatformCondition("izpack.linuxinstall.debian", platform, Platforms.DEBIAN_LINUX);
-        createPlatformCondition("izpack.linuxinstall.fedora", platform, Platforms.FEDORA_LINUX);
-        createPlatformCondition("izpack.linuxinstall.mandrake", platform, Platforms.MANDRAKE_LINUX);
-        createPlatformCondition("izpack.linuxinstall.mandriva", platform, Platforms.MANDRIVA_LINUX);
-        createPlatformCondition("izpack.linuxinstall.redhat", platform, Platforms.RED_HAT_LINUX);
-        createPlatformCondition("izpack.linuxinstall.suse", platform, Platforms.SUSE_LINUX);
-        createPlatformCondition("izpack.linuxinstall.ubuntu", platform, Platforms.UBUNTU_LINUX);
+        createLinuxPlatformCondition("izpack.linuxinstall.debian", platform, Platforms.DEBIAN_LINUX);
+        createLinuxPlatformCondition("izpack.linuxinstall.fedora", platform, Platforms.FEDORA_LINUX);
+        createLinuxPlatformCondition("izpack.linuxinstall.mandrake", platform, Platforms.MANDRAKE_LINUX);
+        createLinuxPlatformCondition("izpack.linuxinstall.mandriva", platform, Platforms.MANDRIVA_LINUX);
+        createLinuxPlatformCondition("izpack.linuxinstall.redhat", platform, Platforms.RED_HAT_LINUX);
+        createLinuxPlatformCondition("izpack.linuxinstall.suse", platform, Platforms.SUSE_LINUX);
+        createLinuxPlatformCondition("izpack.linuxinstall.ubuntu", platform, Platforms.UBUNTU_LINUX);
         createPlatformCondition("izpack.solarisinstall", platform, Platforms.SUNOS);
         createPlatformCondition("izpack.macinstall", platform, Platforms.MAC);
         createPlatformCondition("izpack.macinstall.osx", platform, Platforms.MAC_OSX);
@@ -540,6 +540,26 @@ public class RulesEngineImpl implements RulesEngine
         createPlatformCondition("izpack.solarisinstall.sparc", platform, Platforms.SUNOS_SPARC);
     }
 
+    /**
+     * Creates a condition to determine if the current platform is that specified.
+     *
+     * @param conditionId the condition identifier
+     * @param current     the current platform
+     * @param platform    the platform to compare against
+     */
+    private void createLinuxPlatformCondition(String conditionId, Platform current, Platform platform)
+    {
+        boolean isA = current.isA(Platforms.LINUX);
+        if (isA) {
+        	Platforms p = new Platforms();
+        	isA = p.getCurrentOSName().equals(platform.getName());
+        }
+        // create a condition that simply returns the isA value. This condition doesn't need to be serializable
+        Condition condition = new StaticCondition(isA);
+        condition.setInstallData(installData);
+        condition.setId(conditionId);
+        conditionsMap.put(condition.getId(), condition);
+    }
     /**
      * Creates a condition to determine if the current platform is that specified.
      *

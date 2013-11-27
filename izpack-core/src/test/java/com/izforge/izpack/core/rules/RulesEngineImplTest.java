@@ -107,7 +107,35 @@ public class RulesEngineImplTest
      * Linux install condition identifier.
      */
     private static final String LINUX_INSTALL = "izpack.linuxinstall";
-
+    /**
+     * Linux install condition identifier.
+     */
+    private static final String LINUX_INSTALL_DEBIAN = "izpack.linuxinstall.debian";
+    /**
+     * Linux install condition identifier.
+     */
+    private static final String LINUX_INSTALL_FEDORA = "izpack.linuxinstall.fedora";
+    /**
+     * Linux install condition identifier.
+     */
+    private static final String LINUX_INSTALL_MANDRAKE = "izpack.linuxinstall.mandrake";
+    /**
+     * Linux install condition identifier.
+     */
+    private static final String LINUX_INSTALL_MANDRIVA = "izpack.linuxinstall.mandriva";
+    /**
+     * Linux install condition identifier.
+     */
+    private static final String LINUX_INSTALL_RED_HAT = "izpack.linuxinstallredhat";
+    /**
+     * Linux install condition identifier.
+     */
+    private static final String LINUX_INSTALL_SUSE = "izpack.linuxinstall.suse";
+    /**
+     * Linux install condition identifier.
+     */
+    private static final String LINUX_INSTALL_UBUNTU = "izpack.linuxinstall.ubuntu";
+    
     /**
      * Solaris install condition identifier.
      */
@@ -137,7 +165,9 @@ public class RulesEngineImplTest
      * All install condition identifiers.
      */
     private static final String INSTALL_CONDITIONS[] = {AIX_INSTALL, WINDOWS_INSTALL, WINDOWS_XP_INSTALL,
-            WINDOWS_2003_INSTALL, WINDOWS_VISTA_INSTALL, WINDOWS_7_INSTALL, WINDOWS_8_INSTALL, LINUX_INSTALL, SOLARIS_INSTALL,
+            WINDOWS_2003_INSTALL, WINDOWS_VISTA_INSTALL, WINDOWS_7_INSTALL, WINDOWS_8_INSTALL, LINUX_INSTALL, 
+            LINUX_INSTALL_DEBIAN, LINUX_INSTALL_FEDORA, LINUX_INSTALL_MANDRAKE , LINUX_INSTALL_MANDRIVA, LINUX_INSTALL_RED_HAT,
+            LINUX_INSTALL_SUSE, LINUX_INSTALL_UBUNTU, SOLARIS_INSTALL,
             SOLARIS_X86_INSTALL, SOLARIS_SPARC_INSTALL, MAC_INSTALL, MAC_OSX_INSTALL};
 
 
@@ -549,6 +579,13 @@ public class RulesEngineImplTest
         checkPlatformCondition(Platforms.WINDOWS_7, WINDOWS_7_INSTALL, WINDOWS_INSTALL);
         checkPlatformCondition(Platforms.WINDOWS_8, WINDOWS_8_INSTALL, WINDOWS_INSTALL);
         checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_DEBIAN, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_FEDORA, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_MANDRAKE, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_MANDRIVA, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_RED_HAT, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_SUSE, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_UBUNTU, LINUX_INSTALL);
         checkPlatformCondition(Platforms.SUNOS, SOLARIS_INSTALL);
         checkPlatformCondition(Platforms.SUNOS_X86, SOLARIS_X86_INSTALL, SOLARIS_INSTALL);
         checkPlatformCondition(Platforms.SUNOS_SPARC, SOLARIS_SPARC_INSTALL, SOLARIS_INSTALL);
@@ -578,8 +615,8 @@ public class RulesEngineImplTest
 
         // verify the conditions evaluate as expected
         checkConditions(rules1, installData1);
-        assertTrue(rules1.isConditionTrue("izpack.windowsinstall"));
-        assertFalse(rules1.isConditionTrue("izpack.macinstall.osx"));
+        assertTrue(rules1.isConditionTrue(WINDOWS_INSTALL));
+        assertFalse(rules1.isConditionTrue(MAC_OSX_INSTALL));
 
         // serialize the conditions. This includes built-in conditions which should be excluded when read back in.
         Map<String, Condition> read = serializeConditions(rules1);
@@ -591,8 +628,8 @@ public class RulesEngineImplTest
 
         // verify the conditions evaluate as expected
         checkConditions(rules2, installData2);
-        assertFalse(rules2.isConditionTrue("izpack.windowsinstall"));
-        assertTrue(rules2.isConditionTrue("izpack.macinstall.osx"));
+        assertFalse(rules2.isConditionTrue(WINDOWS_INSTALL));
+        assertTrue(rules2.isConditionTrue(MAC_OSX_INSTALL));
     }
 
 
