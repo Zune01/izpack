@@ -26,6 +26,7 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -194,9 +195,9 @@ public class PlatformsTest extends AbstractPlatformTest
         {
 
             @Override
-            protected List<String> getReleasePath()
+            protected Set<String> getReleasePath()
             {
-                return Collections.emptyList();
+                return Collections.singleton("");
             }
 
             @Override

@@ -23,7 +23,9 @@ import static com.izforge.izpack.util.Platform.Name;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -533,7 +535,7 @@ public class Platforms
         if (result == null)
         {
             result = Name.LINUX;
-            List<String> paths = getReleasePath();
+            Set<String> paths = getReleasePath();
             for (String path : paths) 
             {
                 List<String> text = getText(path);
@@ -618,9 +620,9 @@ public class Platforms
      *
      * @return name of the file the release info is stored in for Linux distributions
      */
-    protected List<String> getReleasePath()
+    protected Set<String> getReleasePath()
     {
-        List<String> result = new ArrayList<String>();
+        Set<String> result = new HashSet<String>();
 
         File[] etcList = new File("/etc").listFiles();
 
