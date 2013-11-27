@@ -22,6 +22,7 @@ import static com.izforge.izpack.util.Platform.Name;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -532,8 +533,8 @@ public class Platforms
         if (result == null)
         {
             result = Name.LINUX;
-            String path = getReleasePath();
-            if (path != null)
+            List<String> paths = getReleasePath();
+            for (String path : paths) 
             {
                 List<String> text = getText(path);
                 if (text != null)
@@ -541,22 +542,27 @@ public class Platforms
                     if (search(text, OsVersionConstants.REDHAT) || search(text, OsVersionConstants.RED_HAT))
                     {
                         result = Name.RED_HAT_LINUX;
+                        break;
                     }
                     else if (search(text, OsVersionConstants.FEDORA))
                     {
                         result = Name.FEDORA_LINUX;
+                        break;
                     }
                     else if (search(text, OsVersionConstants.MANDRAKE))
                     {
                         result = Name.MANDRAKE_LINUX;
+                        break;
                     }
                     else if (search(text, OsVersionConstants.MANDRIVA))
                     {
                         result = Name.MANDRIVA_LINUX;
+                        break;
                     }
                     else if (search(text, OsVersionConstants.SUSE, true))
                     {
                         result = Name.SUSE_LINUX; // case-insensitive since 'SUSE' 10)
+                        break;
                     }
                 }
             }
@@ -612,9 +618,9 @@ public class Platforms
      *
      * @return name of the file the release info is stored in for Linux distributions
      */
-    protected String getReleasePath()
+    protected List<String> getReleasePath()
     {
-        String result = null;
+        List<String> result = new ArrayList<String>();
 
         File[] etcList = new File("/etc").listFiles();
 
@@ -626,8 +632,7 @@ public class Platforms
                 {
                     if (etcEntry.getName().endsWith("-release"))
                     {
-                        result = etcEntry.toString();
-                        break;
+                        result.add(etcEntry.toString());
                     }
                 }
             }
