@@ -24,6 +24,7 @@ import static org.junit.Assert.assertEquals;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
@@ -193,9 +194,9 @@ public class PlatformsTest extends AbstractPlatformTest
         {
 
             @Override
-            protected String getReleasePath()
+            protected List<String> getReleasePath()
             {
-                return "";
+                return Collections.emptyList();
             }
 
             @Override
