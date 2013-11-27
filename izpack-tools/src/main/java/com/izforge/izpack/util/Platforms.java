@@ -17,17 +17,16 @@
  */
 package com.izforge.izpack.util;
 
-import static com.izforge.izpack.util.Platform.Arch;
-import static com.izforge.izpack.util.Platform.Name;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.izforge.izpack.util.Platform.Arch;
+import com.izforge.izpack.util.Platform.Name;
 
 
 /**
@@ -42,6 +41,11 @@ public class Platforms
      * AIX platform.
      */
     public static Platform AIX = new Platform(Name.AIX);
+
+    /**
+     * CentOS Linux platform.
+     */
+    public static Platform CENTOS_LINUX = new Platform(Name.CENTOS_LINUX);
 
     /**
      * Debian Linux platform.
@@ -165,7 +169,7 @@ public class Platforms
      * Known platforms.
      */
     public static Platform[] PLATFORMS = {AIX, DEBIAN_LINUX, FEDORA_LINUX, FREEBSD, HP_UX, LINUX, MAC, MAC_OSX,
-            MANDRAKE_LINUX, MANDRIVA_LINUX, OS_2, RED_HAT_LINUX, SUNOS, SUNOS_X86,
+            CENTOS_LINUX, MANDRAKE_LINUX, MANDRIVA_LINUX, OS_2, RED_HAT_LINUX, SUNOS, SUNOS_X86,
             SUNOS_SPARC, SUSE_LINUX, UBUNTU_LINUX, UNIX, WINDOWS, WINDOWS_XP,
             WINDOWS_2003, WINDOWS_VISTA, WINDOWS_7, WINDOWS_8};
 
@@ -564,6 +568,11 @@ public class Platforms
                     else if (search(text, OsVersionConstants.SUSE, true))
                     {
                         result = Name.SUSE_LINUX; // case-insensitive since 'SUSE' 10)
+                        break;
+                    }
+                    else if (search(text, OsVersionConstants.CENTOS))
+                    {
+                        result = Name.CENTOS_LINUX;
                         break;
                     }
                 }

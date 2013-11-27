@@ -18,14 +18,15 @@
 
 package com.izforge.izpack.util;
 
-import static com.izforge.izpack.util.Platform.Arch;
-import static com.izforge.izpack.util.Platform.Name;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
+
+import com.izforge.izpack.util.Platform.Arch;
+import com.izforge.izpack.util.Platform.Name;
 
 
 /**
@@ -80,7 +81,7 @@ public class PlatformTest extends AbstractPlatformTest
         assertTrue(p2.isA(Name.LINUX));
         assertTrue(p2.isA(Name.UNIX));
         assertFalse(p2.isA(Name.DEBIAN_LINUX));
-
+        
         Name[] linuxes = {Name.DEBIAN_LINUX, Name.FEDORA_LINUX, Name.MANDRAKE_LINUX, Name.MANDRIVA_LINUX,
                 Name.RED_HAT_LINUX, Name.SUSE_LINUX, Name.UBUNTU_LINUX};
         for (Name name : linuxes)
@@ -109,6 +110,11 @@ public class PlatformTest extends AbstractPlatformTest
         Platform p4 = new Platform(Name.MAC);
         assertTrue(p4.isA(Name.MAC));
         assertFalse(p4.isA(Name.MAC_OSX));
+        
+        Platform p5 = new Platform(Name.CENTOS_LINUX);
+        assertTrue(p5.isA(Name.UNIX));
+        assertTrue(p5.isA(Name.LINUX));
+        assertTrue(p5.isA(Name.RED_HAT_LINUX));
     }
 
     /**

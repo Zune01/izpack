@@ -191,6 +191,11 @@ public interface OsVersionConstants
     public final static String UBUNTU = "Ubuntu";
 
     /**
+     * CENTOS = "CentOS"
+     */
+    public final static String CENTOS = "CentOS";
+
+    /**
      * PROC_VERSION = "/proc/version"
      */
     public final static String PROC_VERSION = "/proc/version";

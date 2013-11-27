@@ -110,6 +110,10 @@ public class RulesEngineImplTest
     /**
      * Linux install condition identifier.
      */
+    private static final String LINUX_INSTALL_CENTOS = "izpack.linuxinstall.centos";
+    /**
+     * Linux install condition identifier.
+     */
     private static final String LINUX_INSTALL_DEBIAN = "izpack.linuxinstall.debian";
     /**
      * Linux install condition identifier.
@@ -126,7 +130,7 @@ public class RulesEngineImplTest
     /**
      * Linux install condition identifier.
      */
-    private static final String LINUX_INSTALL_RED_HAT = "izpack.linuxinstallredhat";
+    private static final String LINUX_INSTALL_RED_HAT = "izpack.linuxinstall.redhat";
     /**
      * Linux install condition identifier.
      */
@@ -167,7 +171,7 @@ public class RulesEngineImplTest
     private static final String INSTALL_CONDITIONS[] = {AIX_INSTALL, WINDOWS_INSTALL, WINDOWS_XP_INSTALL,
             WINDOWS_2003_INSTALL, WINDOWS_VISTA_INSTALL, WINDOWS_7_INSTALL, WINDOWS_8_INSTALL, LINUX_INSTALL, 
             LINUX_INSTALL_DEBIAN, LINUX_INSTALL_FEDORA, LINUX_INSTALL_MANDRAKE , LINUX_INSTALL_MANDRIVA, LINUX_INSTALL_RED_HAT,
-            LINUX_INSTALL_SUSE, LINUX_INSTALL_UBUNTU, SOLARIS_INSTALL,
+            LINUX_INSTALL_SUSE, LINUX_INSTALL_UBUNTU, SOLARIS_INSTALL, LINUX_INSTALL_CENTOS,
             SOLARIS_X86_INSTALL, SOLARIS_SPARC_INSTALL, MAC_INSTALL, MAC_OSX_INSTALL};
 
 
@@ -579,13 +583,14 @@ public class RulesEngineImplTest
         checkPlatformCondition(Platforms.WINDOWS_7, WINDOWS_7_INSTALL, WINDOWS_INSTALL);
         checkPlatformCondition(Platforms.WINDOWS_8, WINDOWS_8_INSTALL, WINDOWS_INSTALL);
         checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL);
-        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_DEBIAN, LINUX_INSTALL);
-        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_FEDORA, LINUX_INSTALL);
-        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_MANDRAKE, LINUX_INSTALL);
-        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_MANDRIVA, LINUX_INSTALL);
-        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_RED_HAT, LINUX_INSTALL);
-        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_SUSE, LINUX_INSTALL);
-        checkPlatformCondition(Platforms.LINUX, LINUX_INSTALL_UBUNTU, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.DEBIAN_LINUX, LINUX_INSTALL_DEBIAN, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.FEDORA_LINUX, LINUX_INSTALL_FEDORA, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.MANDRAKE_LINUX, LINUX_INSTALL_MANDRAKE, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.MANDRIVA_LINUX, LINUX_INSTALL_MANDRIVA, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.RED_HAT_LINUX, LINUX_INSTALL_RED_HAT, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.CENTOS_LINUX, LINUX_INSTALL_CENTOS, LINUX_INSTALL_RED_HAT, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.SUSE_LINUX, LINUX_INSTALL_SUSE, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.UBUNTU_LINUX, LINUX_INSTALL_UBUNTU, LINUX_INSTALL);
         checkPlatformCondition(Platforms.SUNOS, SOLARIS_INSTALL);
         checkPlatformCondition(Platforms.SUNOS_X86, SOLARIS_X86_INSTALL, SOLARIS_INSTALL);
         checkPlatformCondition(Platforms.SUNOS_SPARC, SOLARIS_SPARC_INSTALL, SOLARIS_INSTALL);

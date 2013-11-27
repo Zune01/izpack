@@ -47,6 +47,7 @@ public class Platform
         SUNOS(Name.UNIX),
         SUSE_LINUX(Name.LINUX),
         UBUNTU_LINUX(Name.LINUX),
+        CENTOS_LINUX(Name.RED_HAT_LINUX),
         WINDOWS,
         UNKNOWN;
 
