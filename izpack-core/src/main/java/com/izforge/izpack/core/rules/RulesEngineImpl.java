@@ -526,6 +526,13 @@ public class RulesEngineImpl implements RulesEngine
         createPlatformCondition("izpack.windowsinstall.7", platform, Platforms.WINDOWS_7);
         createPlatformCondition("izpack.windowsinstall.8", platform, Platforms.WINDOWS_8);
         createPlatformCondition("izpack.linuxinstall", platform, Platforms.LINUX);
+        createPlatformCondition("izpack.linuxinstall.debian", platform, Platforms.DEBIAN_LINUX);
+        createPlatformCondition("izpack.linuxinstall.fedora", platform, Platforms.FEDORA_LINUX);
+        createPlatformCondition("izpack.linuxinstall.mandrake", platform, Platforms.MANDRAKE_LINUX);
+        createPlatformCondition("izpack.linuxinstall.mandriva", platform, Platforms.MANDRIVA_LINUX);
+        createPlatformCondition("izpack.linuxinstall.redhat", platform, Platforms.RED_HAT_LINUX);
+        createPlatformCondition("izpack.linuxinstall.suse", platform, Platforms.SUSE_LINUX);
+        createPlatformCondition("izpack.linuxinstall.ubuntu", platform, Platforms.UBUNTU_LINUX);
         createPlatformCondition("izpack.solarisinstall", platform, Platforms.SUNOS);
         createPlatformCondition("izpack.macinstall", platform, Platforms.MAC);
         createPlatformCondition("izpack.macinstall.osx", platform, Platforms.MAC_OSX);
