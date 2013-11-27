@@ -158,6 +158,11 @@ public class IzPackNewMojo extends AbstractMojo
      * @parameter default-value="false"
      */
     private boolean enableOverrideArtifact;
+    
+    /**
+     * @parameter 
+     */
+    private List<String> propIncludes;
 
 
     public void execute() throws MojoExecutionException, MojoFailureException
@@ -240,6 +245,11 @@ public class IzPackNewMojo extends AbstractMojo
             Properties properties = project.getProperties();
             for (String propertyName : properties.stringPropertyNames())
             {
+            	if (propIncludes != null) {
+            		if (!propIncludes.contains(propertyName)) {
+            			continue;
+            		}
+            	}
                 String value = properties.getProperty(propertyName);
                 if (propertyManager.addProperty(propertyName, value))
                 {
