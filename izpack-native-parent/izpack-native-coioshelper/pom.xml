@@ -29,6 +29,7 @@
                     <javahClassNames>
                         <javahClassName>com.coi.tools.os.izpack.COIOSHelper</javahClassName>
                         <javahClassName>com.coi.tools.os.win.RegistryImpl</javahClassName>
+                        <javahClassName>com.coi.tools.os.win.UserImpl</javahClassName>
                     </javahClassNames>
 
                     <sources>
