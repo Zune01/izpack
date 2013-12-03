@@ -691,13 +691,15 @@ public class ProcessPanelWorker implements Runnable
                 Class<?> procClass = loader.loadClass(myClassName);
 
                 Object instance = procClass.newInstance();
-                Method method = procClass.getMethod("run", new Class[]{AbstractUIProcessHandler.class,
-                        Variables.class});
+                Method method = null;
                 boolean newVersion = true;
-                if (method == null) {
+                try {
+					method = procClass.getMethod("run", new Class[]{AbstractUIProcessHandler.class,
+	                        Variables.class});
+                } catch (NoSuchMethodException ignore) {
                 	newVersion = false;
                 	method = procClass.getMethod("run", new Class[]{AbstractUIProcessHandler.class,
-                            String[].class});
+                			String[].class});
                 }
 
                 if (method.getReturnType().getName().equals("boolean"))
