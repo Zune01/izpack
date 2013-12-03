@@ -692,15 +692,34 @@ public class ProcessPanelWorker implements Runnable
 
                 Object instance = procClass.newInstance();
                 Method method = procClass.getMethod("run", new Class[]{AbstractUIProcessHandler.class,
-                        String[].class});
+                        Variables.class});
+                boolean newVersion = true;
+                if (method == null) {
+                	newVersion = false;
+                	method = procClass.getMethod("run", new Class[]{AbstractUIProcessHandler.class,
+                            String[].class});
+                }
 
                 if (method.getReturnType().getName().equals("boolean"))
                 {
-                    result = (Boolean) method.invoke(instance, new Object[]{myHandler, params});
+                	if (newVersion) {
+                		result = (Boolean) method.invoke(instance, new Object[]{myHandler, variables});
+                	}
+                	else 
+                	{
+                		result = (Boolean) method.invoke(instance, new Object[]{myHandler, params});
+                	}
                 }
                 else
                 {
-                    method.invoke(instance, new Object[]{myHandler, params});
+                	if (newVersion)
+                	{
+                		method.invoke(instance, new Object[]{myHandler, variables});
+                	}
+                	else
+                	{
+                		method.invoke(instance, new Object[]{myHandler, params});
+                	}
                     result = true;
                 }
             }
