@@ -36,8 +36,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.coi.tools.os.win.UserImpl;
-
 /**
  * This class is responsible for allowing the installer to re-launch itself with administrator permissions.
  * The way of achieving this greatly varies among the platforms. The JDK classes are of not help here as there
@@ -100,7 +98,16 @@ public class PrivilegedRunner
         boolean result;
         if (platform.isA(WINDOWS))
         {
-            result = !isPrivilegedMode() && !UserImpl.isUserAnAdmin();
+            if (path != null)
+            {
+                // use the parent path, as that needs to be written to in order to delete the tree
+                path = new File(path).getParent();
+            }
+            if (path == null || path.trim().length() == 0)
+            {
+                path = getProgramFiles();
+            }
+            result = !isPrivilegedMode() && !canWrite(path);
         }
         else
         {
