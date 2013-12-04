@@ -204,12 +204,15 @@ public class InstallPanel extends IzPanel implements ProgressListener
                 overallProgressBar.setEnabled(false);
                 packOpLabel.setText(" ");
                 packOpLabel.setEnabled(false);
-                installData.setCanClose(true);
                 validated = true;
                 if (installData.isInstallSuccess() &&
                         installData.getPanels().indexOf(InstallPanel.this) != (installData.getPanels().size() - 1))
                 {
                     parent.unlockNextButton();
+                }
+                else
+                {
+                	installData.setCanClose(true);
                 }
             }
         });
