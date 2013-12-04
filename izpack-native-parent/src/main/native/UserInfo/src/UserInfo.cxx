@@ -29,6 +29,7 @@
 #include <windows.h>
 #include <lmcons.h>
 #include <tchar.h>
+#include "WinLibEnv.h"
 
 
 JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_isUserAnAdmin(JNIEnv *, jobject)
@@ -169,4 +170,32 @@ JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_isUserAnAdm
    }
 
    return fReturn;
+}
+
+JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_validatePassword(JNIEnv *env, jobject obj, jstring jUsername, jstring jDomain, jstring jPassword) {
+	jboolean result = false;
+	LPCTSTR username = NULL;
+	LPCTSTR domain = NULL;
+	LPCTSTR password = NULL;
+	HANDLE hToken;
+
+	if (jUsername != NULL) 
+		username = (LPCTSTR)env->GET_STRING_CHARS( jUsername, 0);
+	if (jDomain != NULL) 
+		domain = (LPCTSTR)env->GET_STRING_CHARS( jDomain, 0);
+	if (jPassword != NULL) 
+		password = (LPCTSTR)env->GET_STRING_CHARS( jPassword, 0);
+	__try {
+		result = ::LogonUser(username, domain, password, LOGON32_LOGON_NETWORK, LOGON32_PROVIDER_DEFAULT, &hToken);
+	}
+	__finally {
+		::CloseHandle(hToken);
+		if (username != NULL)
+			env->RELEASE_STRING_CHARS( jUsername, username);
+		if (domain != NULL)
+			env->RELEASE_STRING_CHARS( jDomain, domain);
+		if (password != NULL)
+			env->RELEASE_STRING_CHARS( jPassword, password);
+	}
+	return result;
 }

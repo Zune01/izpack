@@ -106,12 +106,12 @@ echo ---------
     <ClCompile Include="UserInfo.cxx">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="WinLibEnv.cxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\izpack-native-userinfo\target\native\javah\com_izforge_izpack_util_win_UserInfo.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="UserInfo.h" />
     <ClInclude Include="UnicodeHelper.h" />
+    <ClInclude Include="WinLibEnv.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UserInfo.rc" />

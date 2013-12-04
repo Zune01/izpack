@@ -18,18 +18,18 @@
     <ClCompile Include="UserInfo.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WinLibEnv.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UnicodeHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\izpack-native-userinfo\target\native\javah\com_izforge_izpack_util_win_UserInfo.h">
+    <ClInclude Include="WinLibEnv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

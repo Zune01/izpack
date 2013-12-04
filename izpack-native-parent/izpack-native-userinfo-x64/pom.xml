@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>izpack-native-userinfo-x64</artifactId>
-    <name>IzPack native ShellLink module for win64</name>
+    <name>IzPack native UserInfo module for win64</name>
     <packaging>dll</packaging>
     <dependencies>
         <dependency>
