@@ -260,7 +260,7 @@ public class AbstractPanelTest
         frameFixture = new FrameFixture(frame);
         container.getContainer().addComponent(frame);
         InstallDataConfiguratorWithRules configuratorWithRules = new InstallDataConfiguratorWithRules(
-                installData, rules, Platforms.UNIX);
+                installData, rules, Platforms.UNIX, null);
         InstallerController controller = new InstallerController(configuratorWithRules, frame);
         controller.buildInstallation();
         controller.launchInstallation();
