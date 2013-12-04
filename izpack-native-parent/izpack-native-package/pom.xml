@@ -38,6 +38,18 @@
         </dependency>
         <dependency>
             <groupId>org.codehaus.izpack</groupId>
+            <artifactId>izpack-native-userinfo</artifactId>
+            <version>${project.version}</version>
+            <type>dll</type>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.izpack</groupId>
+            <artifactId>izpack-native-userinfo-x64</artifactId>
+            <version>${project.version}</version>
+            <type>dll</type>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.izpack</groupId>
             <artifactId>izpack-native-setupapi</artifactId>
             <version>${project.version}</version>
             <type>dll</type>

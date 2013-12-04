@@ -49,5 +49,19 @@
             </includes>
             <outputFileNameMapping>ShellLink_x64.dll</outputFileNameMapping>
         </dependencySet>
+        <dependencySet>
+            <outputDirectory>native/izpack</outputDirectory>
+            <includes>
+                <include>org.codehaus.izpack:izpack-native-userinfo:dll</include>
+            </includes>
+            <outputFileNameMapping>UserInfo.dll</outputFileNameMapping>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>native/izpack</outputDirectory>
+            <includes>
+                <include>org.codehaus.izpack:izpack-native-userinfo-x64:dll</include>
+            </includes>
+            <outputFileNameMapping>UserInfo_x64.dll</outputFileNameMapping>
+        </dependencySet>
     </dependencySets>
 </assembly>

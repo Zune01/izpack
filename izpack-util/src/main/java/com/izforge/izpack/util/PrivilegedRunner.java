@@ -36,6 +36,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.izforge.izpack.util.win.UserInfo;
+
 /**
  * This class is responsible for allowing the installer to re-launch itself with administrator permissions.
  * The way of achieving this greatly varies among the platforms. The JDK classes are of not help here as there
@@ -56,15 +58,30 @@ public class PrivilegedRunner
      */
     private static final Logger logger = Logger.getLogger(PrivilegedRunner.class.getName());
 
+	private Librarian librarian;
+
 
     /**
      * Builds a default privileged runner.
      *
      * @param platform the current platform
+     * @param librarian 
      */
     public PrivilegedRunner(Platform platform)
     {
         this.platform = platform;
+    }
+
+    /**
+     * Builds a default privileged runner.
+     *
+     * @param platform the current platform
+     * @param librarian 
+     */
+    public PrivilegedRunner(Platform platform, Librarian librarian)
+    {
+        this.platform = platform;
+		this.librarian = librarian;
     }
 
     /**
@@ -98,6 +115,17 @@ public class PrivilegedRunner
         boolean result;
         if (platform.isA(WINDOWS))
         {
+            if (librarian != null) 
+            {
+                try
+                {
+                    UserInfo info = new UserInfo(librarian);
+                    return !info.isUserAnAdmin();
+                }
+                catch (Exception ignore)
+                {
+                }
+            }
             if (path != null)
             {
                 // use the parent path, as that needs to be written to in order to delete the tree

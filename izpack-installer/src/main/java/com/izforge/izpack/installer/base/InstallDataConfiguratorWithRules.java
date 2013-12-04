@@ -26,6 +26,7 @@ import com.izforge.izpack.api.data.InstallData;
 import com.izforge.izpack.api.exception.IzPackException;
 import com.izforge.izpack.api.rules.RulesEngine;
 import com.izforge.izpack.util.FileUtil;
+import com.izforge.izpack.util.Librarian;
 import com.izforge.izpack.util.Platform;
 import com.izforge.izpack.util.PrivilegedRunner;
 
@@ -52,6 +53,8 @@ public class InstallDataConfiguratorWithRules
      */
     private Platform platform;
 
+	private Librarian librarian;
+
 
     /**
      * Constructs an <tt>InstallDataConfiguratorWithRules</tt>.
@@ -60,11 +63,12 @@ public class InstallDataConfiguratorWithRules
      * @param rules       the rules
      * @param platform    the current platform
      */
-    public InstallDataConfiguratorWithRules(InstallData installData, RulesEngine rules, Platform platform)
+    public InstallDataConfiguratorWithRules(InstallData installData, RulesEngine rules, Platform platform, Librarian librarian)
     {
         this.installData = installData;
         this.rules = rules;
         this.platform = platform;
+		this.librarian = librarian;
     }
 
 
@@ -98,7 +102,7 @@ public class InstallDataConfiguratorWithRules
      */
     private void elevate()
     {
-        PrivilegedRunner runner = new PrivilegedRunner(platform);
+        PrivilegedRunner runner = new PrivilegedRunner(platform, librarian);
         if (runner.isPlatformSupported() && runner.isElevationNeeded())
         {
             try
