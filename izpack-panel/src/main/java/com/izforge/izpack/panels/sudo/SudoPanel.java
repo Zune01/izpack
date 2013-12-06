@@ -52,7 +52,9 @@ import com.izforge.izpack.installer.gui.InstallerFrame;
 import com.izforge.izpack.installer.gui.IzPanel;
 import com.izforge.izpack.installer.unpacker.ScriptParser;
 import com.izforge.izpack.util.FileExecutor;
+import com.izforge.izpack.util.Platform;
 import com.izforge.izpack.util.PlatformModelMatcher;
+import com.izforge.izpack.util.PrivilegedRunner;
 
 /**
  * The packs selection panel class.
@@ -72,15 +74,7 @@ public class SudoPanel extends IzPanel implements ActionListener
 
     private boolean isValid = false;
 
-    /**
-     * Replaces variables in scripts.
-     */
-    private final VariableSubstitutor replacer;
-
-    /**
-     * The platform-model matcher.
-     */
-    private PlatformModelMatcher matcher;
+    private SudoPanelHelper helper;
 
     /**
      * The constructor.
@@ -96,9 +90,8 @@ public class SudoPanel extends IzPanel implements ActionListener
                      VariableSubstitutor replacer, PlatformModelMatcher matcher)
     {
         super(panel, parent, installData, resources);
-        this.replacer = replacer;
-        this.matcher = matcher;
-
+        this.helper = new SudoPanelHelper(installData, replacer, matcher, this);
+        
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(LabelFactory
@@ -144,7 +137,14 @@ public class SudoPanel extends IzPanel implements ActionListener
      */
     public void panelActivate()
     {
-        passwordField.requestFocus();
+        if (helper.isSudoNeeded())
+        {
+            passwordField.requestFocus();
+        }
+        else 
+        {
+            parent.skipPanel();
+        }
     }
 
     /**
@@ -157,78 +157,13 @@ public class SudoPanel extends IzPanel implements ActionListener
         doSudoCmd();
     }
 
+    private boolean doSudoCmd()
+    {
+        return helper.doSudoCmd(passwordField.getText());
+    }
+
     // check if sudo password is correct (so sudo can be used in all other
     // scripts, even without password, lasts for 5 minutes)
-
-    private void doSudoCmd()
-    {
-        String pass = passwordField.getText();
-
-        File file = null;
-        try
-        {
-            // write file in /tmp
-            file = new File("/tmp/cmd_sudo.sh");// ""c:/temp/run.bat""
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write("echo $password | sudo -S ls\nexit $?".getBytes()); // "echo
-            // $password
-            // >
-            // pipo.txt"
-            fos.close();
-
-            // execute
-            Properties vars = new Properties();
-            vars.put("password", pass);
-
-            List<OsModel> oses = new ArrayList<OsModel>();
-            oses.add(new OsModel("unix", null, null, null, null));
-
-            ParsableFile parsableFile = new ParsableFile(file.getAbsolutePath(), null, null, oses);
-            ScriptParser scriptParser = new ScriptParser(replacer, matcher);
-            scriptParser.parse(parsableFile);
-
-            ArrayList<ExecutableFile> executableFiles = new ArrayList<ExecutableFile>();
-            ExecutableFile executableFile = new ExecutableFile(file.getAbsolutePath(),
-                                                               ExecutableFile.POSTINSTALL, ExecutableFile.ABORT, oses,
-                                                               false);
-            executableFiles.add(executableFile);
-            FileExecutor fileExecutor = new FileExecutor(executableFiles);
-            int retval = fileExecutor.executeFiles(ExecutableFile.POSTINSTALL, matcher, this);
-            if (retval == 0)
-            {
-                this.installData.setVariable("password", pass);
-                isValid = true;
-            }
-            // else is already showing dialog
-            // {
-            // JOptionPane.showMessageDialog(this, "Cannot execute 'sudo' cmd,
-            // check your password", "Error", JOptionPane.ERROR_MESSAGE);
-            // }
-        }
-        catch (Exception e)
-        {
-            // JOptionPane.showMessageDialog(this, "Cannot execute 'sudo' cmd,
-            // check your password", "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-            isValid = false;
-        }
-        try
-        {
-            if (file != null && file.exists())
-            {
-                file.delete();// you don't
-            }
-            // want the file
-            // with password
-            // tobe arround,
-            // in case of
-            // error
-        }
-        catch (Exception e)
-        {
-            // ignore
-        }
-    }
 
     /**
      * Indicates wether the panel has been validated or not.
@@ -239,7 +174,7 @@ public class SudoPanel extends IzPanel implements ActionListener
     {
         if (!isValid)
         {
-            doSudoCmd();
+            isValid = doSudoCmd();
         }
         if (!isValid)
         {
