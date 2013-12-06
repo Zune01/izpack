@@ -40,23 +40,26 @@ import com.izforge.izpack.util.StringTool;
 
 /**
  * The program entry point. Selects between GUI and text install modes.
- *
+ * 
  * @author Jonathan Halliday
  * @author René Krell
  */
 public class Installer
 {
+
     private static Logger logger;
 
     public static final int INSTALLER_GUI = 0, INSTALLER_AUTO = 1, INSTALLER_CONSOLE = 2;
-    public static final int CONSOLE_INSTALL = 0, CONSOLE_GEN_TEMPLATE = 1, CONSOLE_FROM_TEMPLATE = 2,
-            CONSOLE_FROM_SYSTEMPROPERTIES = 3, CONSOLE_FROM_SYSTEMPROPERTIESMERGE = 4;
+
+    public static final int CONSOLE_INSTALL = 0, CONSOLE_GEN_TEMPLATE = 1,
+            CONSOLE_FROM_TEMPLATE = 2, CONSOLE_FROM_SYSTEMPROPERTIES = 3,
+            CONSOLE_FROM_SYSTEMPROPERTIESMERGE = 4;
 
     public static final String LOGGING_CONFIGURATION = "/com/izforge/izpack/installer/logging/logging.properties";
 
     /*
      * The main method (program entry point).
-     *
+     * 
      * @param args The arguments passed on the command-line.
      */
     public static void main(String[] args)
@@ -84,16 +87,19 @@ public class Installer
             if (stream != null)
             {
                 manager.readConfiguration(stream);
-                //System.out.println("Read logging configuration from resource " + LOGGING_CONFIGURATION);
+                // System.out.println("Read logging configuration from resource " +
+                // LOGGING_CONFIGURATION);
             }
             else
             {
-                //System.err.println("Logging configuration resource " + LOGGING_CONFIGURATION + " not found");
+                // System.err.println("Logging configuration resource " + LOGGING_CONFIGURATION +
+                // " not found");
             }
         }
         catch (IOException e)
         {
-            //System.err.println("Error loading logging configuration resource " + LOGGING_CONFIGURATION + ": " + e);
+            // System.err.println("Error loading logging configuration resource " +
+            // LOGGING_CONFIGURATION + ": " + e);
         }
 
         Logger rootLogger = Logger.getLogger("com.izforge.izpack");
@@ -175,8 +181,13 @@ public class Installer
                     }
                     else
                     {
-                        type = INSTALLER_AUTO;
                         path = arg;
+                        type = INSTALLER_AUTO;
+                        if (path.endsWith(".properties"))
+                        {
+                            type = INSTALLER_CONSOLE;
+                            consoleAction = CONSOLE_FROM_TEMPLATE;
+                        }
                     }
                 }
                 catch (NoSuchElementException e)
@@ -187,7 +198,6 @@ public class Installer
             }
 
             launchInstall(type, consoleAction, path, langcode, media);
-
         }
         catch (Exception e)
         {
@@ -197,7 +207,7 @@ public class Installer
     }
 
     private void launchInstall(int type, int consoleAction, String path, String langCode,
-                               String mediaDir) throws Exception
+            String mediaDir) throws Exception
     {
         // if headless, just use the console mode
         if (type == INSTALLER_GUI && GraphicsEnvironment.isHeadless())
@@ -207,24 +217,24 @@ public class Installer
 
         switch (type)
         {
-            case INSTALLER_GUI:
-                InstallerGui.run(mediaDir);
-                break;
+        case INSTALLER_GUI:
+            InstallerGui.run(mediaDir);
+            break;
 
-            case INSTALLER_AUTO:
-                launchAutomatedInstaller(path, mediaDir);
-                break;
+        case INSTALLER_AUTO:
+            launchAutomatedInstaller(path, mediaDir);
+            break;
 
-            case INSTALLER_CONSOLE:
-                launchConsoleInstaller(consoleAction, path, langCode, mediaDir);
-                break;
+        case INSTALLER_CONSOLE:
+            launchConsoleInstaller(consoleAction, path, langCode, mediaDir);
+            break;
         }
     }
 
     /**
      * Launches an {@link AutomatedInstaller}.
-     *
-     * @param path     the input file path
+     * 
+     * @param path the input file path
      * @param mediaDir the multi-volume media directory. May be <tt>null</tt>
      * @throws Exception for any error
      */
@@ -238,13 +248,14 @@ public class Installer
 
     /**
      * Launches an {@link ConsoleInstaller}.
-     *
+     * 
      * @param consoleAction the type of the action to perform
-     * @param path          the path to use for the action. May be <tt>null</tt>
-     * @param langCode      the language code. May be <tt>null</tt>
-     * @param mediaDir      the multi-volume media directory. May be <tt>null</tt>
+     * @param path the path to use for the action. May be <tt>null</tt>
+     * @param langCode the language code. May be <tt>null</tt>
+     * @param mediaDir the multi-volume media directory. May be <tt>null</tt>
      */
-    private void launchConsoleInstaller(int consoleAction, String path, String langCode, String mediaDir)
+    private void launchConsoleInstaller(int consoleAction, String path, String langCode,
+            String mediaDir)
     {
         InstallerContainer container = new ConsoleInstallerContainer();
         if (langCode != null)
