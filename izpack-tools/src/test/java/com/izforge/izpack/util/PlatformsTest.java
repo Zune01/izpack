@@ -127,6 +127,23 @@ public class PlatformsTest extends AbstractPlatformTest
         assertEquals(Arch.X64, windows8x64.getArch());
         assertEquals("6.2", windows8x64.getVersion());
     }
+
+    
+    /**
+     * Tests the {@link Platforms#getCurrentPlatform(String, String, String)} method with windows 8.
+     */
+    @Test
+    public void testGetWin2008PlatformByNameArchVersion()
+    {
+        Platforms platforms = new Platforms();
+        Platform windows2008R2x64 = platforms.getCurrentPlatform("Windows Server 2008 R2", OsVersionConstants.AMD64,
+                OsVersionConstants.WINDOWS_7_VERSION);
+        assertEquals(Name.WINDOWS, windows2008R2x64.getName());
+        assertEquals("Windows Server 2008 R2", windows2008R2x64.getSymbolicName());
+        assertEquals(Arch.X64, windows2008R2x64.getArch());
+        assertEquals("6.1", windows2008R2x64.getVersion());
+    }
+
     /**
      * Tests the {@link Platforms#getPlatform(String, String)} method.
      */

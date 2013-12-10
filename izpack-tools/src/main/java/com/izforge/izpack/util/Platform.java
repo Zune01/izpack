@@ -241,10 +241,10 @@ public class Platform
      */
     public Platform(Name name, String symbolicName, String version, Arch arch, String javaVersion)
     {
-        if (symbolicName != null && (symbolicName.indexOf(' ') > 0 || symbolicName.indexOf(',') > 0))
-        {
-            throw new IllegalArgumentException("Argument 'symbolicName' should not contain spaces or commas");
-        }
+//        if (symbolicName != null && (symbolicName.indexOf(' ') > 0 || symbolicName.indexOf(',') > 0))
+//        {
+//            throw new IllegalArgumentException("Argument 'symbolicName' should not contain spaces or commas");
+//        }
         this.name = name;
         this.symbolicName = symbolicName;
         this.version = version;
