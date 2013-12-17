@@ -130,4 +130,10 @@ public class ProcessPanelAutomation extends PanelAutomationHelper implements Pan
     public void finishProcess()
     {
     }
+
+    @Override
+    public void logOutputNoNewline(String message)
+    {
+        System.out.print(message);
+    }
 }

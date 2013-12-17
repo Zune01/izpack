@@ -39,6 +39,13 @@ public interface AbstractUIProcessHandler extends AbstractUIHandler
      */
     public void logOutput(String message, boolean stderr);
 
+    /**
+     * Log the given message.
+     *
+     * @param message
+     */
+    public void logOutputNoNewline(String message);
+
     public void startProcessing(int no_of_processes);
 
     /**

@@ -135,4 +135,10 @@ public class ProcessConsolePanel extends AbstractConsolePanel implements Console
         worker.run();
         return worker.getResult();
     }
+
+    @Override
+    public void logOutputNoNewline(String message)
+    {
+        System.out.print(message);
+    }
 }

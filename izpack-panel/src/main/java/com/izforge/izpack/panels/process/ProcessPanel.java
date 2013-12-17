@@ -223,17 +223,7 @@ public class ProcessPanel extends IzPanel implements AbstractUIProcessHandler
      */
     public void logOutput(String message, boolean stderr)
     {
-        // TODO: make it colored
-        this.outputPane.append(message + '\n');
-
-        SwingUtilities.invokeLater(new Runnable()
-        {
-
-            public void run()
-            {
-                outputPane.setCaretPosition(outputPane.getText().length());
-            }
-        });
+        logOutputNoNewline(message + '\n');
     }
 
     /**
@@ -292,5 +282,20 @@ public class ProcessPanel extends IzPanel implements AbstractUIProcessHandler
     public void makeXMLData(IXMLElement panelRoot)
     {
         // does nothing (no state to save)
+    }
+
+    @Override
+    public void logOutputNoNewline(String message)
+    {
+        // TODO: make it colored
+        this.outputPane.append(message);
+
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                outputPane.setCaretPosition(outputPane.getText().length());
+            }
+        });
     }
 }
