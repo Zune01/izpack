@@ -646,11 +646,11 @@ public class ProcessPanelWorker implements Runnable
     }
 
     /**
-     * Tries to create a class that has an empty contstructor and a method
+     * Tries to create a class that has an empty constructor and a method
      * run(AbstractUIProcessHandler, String[]) If found, it calls the method and processes all
      * returned exceptions
      */
-    private static class ExecutableClass implements ProcessPanelWorker.Processable
+    private class ExecutableClass implements ProcessPanelWorker.Processable
     {
 
         final private String myClassName;
@@ -705,7 +705,7 @@ public class ProcessPanelWorker implements Runnable
                     if (newVersion)
                     {
                         result = (Boolean) method.invoke(instance, new Object[] { myHandler,
-                                variables});
+                                variables, idata.getPlatform() });
                     }
                     else
                     {
