@@ -297,7 +297,7 @@ public class InstallationGroupPanel extends IzPanel
     @Override
     public String getSummaryBody()
     {
-        return (rows[selectedGroup].name);
+        return (rows[selectedGroup].description);
     }
 
     /**
