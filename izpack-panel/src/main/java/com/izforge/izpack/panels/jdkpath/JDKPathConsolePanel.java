@@ -94,7 +94,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
             }
             // Validate
             String minVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
-            String maxVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
+            String maxVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MAX_VERSION);
             Platform platform = installData.getPlatform();
             
             if (!pathIsValid(strTargetPath) || !verifyVersion(minVersion, maxVersion, strTargetPath, platform)) {
