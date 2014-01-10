@@ -193,14 +193,24 @@ public class IzPackNewMojo extends AbstractMojo
         {
             if (enableAttachArtifact)
             {
+                getLog().info("Attaching artifact to classifier " + classifier);
                 projectHelper.attachArtifact(project, getType(), classifier, jarFile);
+            }
+            else
+            {
+                getLog().warn("Not attaching artifact because classifier is set '" + classifier + "' but enableAttachArtifact is off");
             }
         }
         else
         {
             if (enableOverrideArtifact)
             {
+                getLog().info("Replacing artifact");
                 project.getArtifact().setFile(jarFile);
+            }
+            else
+            {
+                getLog().warn("Not replacing artifact because enableOverrideArtifact is off");
             }
         }
     }
