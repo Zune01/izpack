@@ -50,8 +50,12 @@ public class SudoConsolePanel extends AbstractConsolePanel implements ConsolePan
     @Override
     public boolean run(InstallData installData, Console console)
     {
-        SudoPanelHelper helper = new SudoPanelHelper(installData, replacer, matcher, null); 
-        return false;
+        SudoPanelHelper helper = new SudoPanelHelper(installData, replacer, matcher, null);
+        if (helper.isSudoNeeded()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
