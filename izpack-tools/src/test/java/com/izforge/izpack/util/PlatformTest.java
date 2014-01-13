@@ -213,17 +213,17 @@ public class PlatformTest extends AbstractPlatformTest
 //        {
 //            // do nothing
 //        }
-
-        String invalidCommas = "Windows,7";
-        try
-        {
-            new Platform(Name.WINDOWS, invalidCommas, OsVersionConstants.WINDOWS_7_VERSION);
-            fail("Expected IllegalArgumentException to be thrown");
-        }
-        catch (IllegalArgumentException expected)
-        {
-            // do nothing
-        }
+//
+//        String invalidCommas = "Windows,7";
+//        try
+//        {
+//            new Platform(Name.WINDOWS, invalidCommas, OsVersionConstants.WINDOWS_7_VERSION);
+//            fail("Expected IllegalArgumentException to be thrown");
+//        }
+//        catch (IllegalArgumentException expected)
+//        {
+//            // do nothing
+//        }
     }
 
     /**
