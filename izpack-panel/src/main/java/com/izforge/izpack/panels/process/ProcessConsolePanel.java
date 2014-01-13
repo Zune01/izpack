@@ -102,20 +102,17 @@ public class ProcessConsolePanel extends AbstractConsolePanel implements Console
 
     public void finishProcess()
     {
-        // TODO Auto-generated method stub
     }
 
     public void finishProcessing(boolean unlockPrev, boolean unlockNext)
     {
-        // TODO Auto-generated method stub
-
     }
 
     public boolean generateProperties(InstallData installData,
                                       PrintWriter printWriter)
     {
         // TODO finish this
-        return false;
+        return true;
     }
 
     public boolean run(InstallData installData, Properties p)
