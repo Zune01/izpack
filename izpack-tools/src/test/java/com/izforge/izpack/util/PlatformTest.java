@@ -203,16 +203,16 @@ public class PlatformTest extends AbstractPlatformTest
         Platform platform1 = new Platform(Name.WINDOWS, validName, OsVersionConstants.WINDOWS_7_VERSION);
         assertEquals(validName, platform1.getSymbolicName());
 
-        String invalidSpaces = "Windows 7";
-        try
-        {
-            new Platform(Name.WINDOWS, invalidSpaces, OsVersionConstants.WINDOWS_7_VERSION);
-            fail("Expected IllegalArgumentException to be thrown");
-        }
-        catch (IllegalArgumentException expected)
-        {
-            // do nothing
-        }
+//        String invalidSpaces = "Windows 7";
+//        try
+//        {
+//            new Platform(Name.WINDOWS, invalidSpaces, OsVersionConstants.WINDOWS_7_VERSION);
+//            fail("Expected IllegalArgumentException to be thrown");
+//        }
+//        catch (IllegalArgumentException expected)
+//        {
+//            // do nothing
+//        }
 
         String invalidCommas = "Windows,7";
         try
