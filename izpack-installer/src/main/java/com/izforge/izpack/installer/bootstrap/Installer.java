@@ -183,7 +183,7 @@ public class Installer
                     {
                         path = arg;
                         type = INSTALLER_AUTO;
-                        if (path.endsWith(".properties"))
+                        if (path.endsWith(".properties") && consoleAction == CONSOLE_INSTALL)
                         {
                             type = INSTALLER_CONSOLE;
                             consoleAction = CONSOLE_FROM_TEMPLATE;
