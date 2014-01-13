@@ -118,7 +118,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
     public boolean run(InstallData installData, Console console)
     {
         String minVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
-        String maxVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MIN_VERSION);
+        String maxVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MAX_VERSION);
 
         String strPath;
         String strDefaultPath = installData.getVariable(JDKPathPanel.JDK_PATH);
