@@ -114,7 +114,7 @@ public abstract class AbstractConsolePanel implements ConsolePanel
         boolean result;
         String prompt = installData.getMessages().get("ConsoleInstaller.redisplayQuit");
         console.println();
-        int value = console.prompt(prompt, 1, 2, 2);
+        int value = console.prompt(prompt, 2, 3, 2);
         result = value != 2 && run(installData, console);
         return result;
     }

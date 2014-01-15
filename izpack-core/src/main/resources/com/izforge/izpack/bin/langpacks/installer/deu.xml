@@ -304,7 +304,7 @@ file we looked for -->
     <!-- ConsoleInstaller strings -->
     <str id="ConsoleInstaller.continueQuitRedisplay" txt="Eingabe 1 (Weiter), 2 (Beenden), 3 (Erneut anzeigen)"/>
     <str id="ConsoleInstaller.acceptRejectRedisplay" txt="Eingabe 1 (Bestätigen), 2 (Ablehnen), 3 (Erneut anzeigen)"/>
-    <str id="ConsoleInstaller.redisplayQuit" txt="Eingabe 1 (Erneut anzeigen), 2 (Beenden)"/>
+    <str id="ConsoleInstaller.redisplayQuit" txt="Eingabe 2 (Beenden), 3 (Erneut anzeigen)"/>
 
     <!-- Add your own panels specific strings here if you need or use a custom
 langpack with the same syntax referred as resoure CustomLangpack.xml_[ISO3]" -->

@@ -279,7 +279,7 @@
     <!-- ConsoleInstaller strings -->
     <str id="ConsoleInstaller.continueQuitRedisplay" txt="Appuyer sur 1 pour continuer, 2 pour quitter, 3 pour réafficher"/>
     <str id="ConsoleInstaller.acceptRejectRedisplay" txt="Appuyer sur 1 pour accepter, 2 pour refuser, 3 pour réafficher"/>
-    <str id="ConsoleInstaller.redisplayQuit" txt="Appuyer sur 1 pour réafficher, 2 pour quitter"/>
+    <str id="ConsoleInstaller.redisplayQuit" txt="Appuyer sur 2 pour quitter, 3 pour réafficher"/>
 
     <!-- Next Media Strings -->
     <str id="nextmedia.title" txt="Prochain media d'installation"/>
