@@ -61,6 +61,15 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
     @Override
     public boolean generateProperties(InstallData installData,
     		PrintWriter printWriter) {
+        Map<String, GroupData> installGroups = InstallationGroups.getInstallGroups(automatedInstallData);
+        StringBuilder output = new StringBuilder();
+        for (String s : installGroups.keySet()) {
+            if (output.length() > 0) {
+                output.append(", ");
+            }
+            output.append(s);
+        }
+        printWriter.println("# Choose one of: " + output.toString());
     	printWriter.println(InstallationGroupPanel.INSTALL_GROUP + "=");
     	return true;
     }
@@ -129,10 +138,10 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
         GroupData selected = null;
         for (GroupData groupData : options) {
             if (selected!=null) {
-                out(Prompt.Type.INFORMATION, groupData.name + SPACE + NOT_SELECTED);
+                out(Prompt.Type.INFORMATION, groupData.description + SPACE + NOT_SELECTED);
                 continue;
             }
-            if (askUser(groupData.name)) {
+            if (askUser(groupData.description)) {
                 selected = groupData;
                 continue;
             }
