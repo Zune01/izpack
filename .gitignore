@@ -18,3 +18,4 @@ izpack-compiler/out.zip
 .idea
 /bin
 /izpack-native-parent/src/main/native/COIOSHelper/src/ipch
+pom.xml.versionsBackup
