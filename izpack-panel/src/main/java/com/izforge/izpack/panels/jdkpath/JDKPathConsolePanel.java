@@ -52,6 +52,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
     private String detectedVersion;
     private final VariableSubstitutor variableSubstitutor;
     private final RegistryDefaultHandler handler;
+    private String variableName;
 
     /**
      * Constructs a <tt>JDKPathConsolePanelHelper</tt>.
@@ -66,17 +67,18 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
         super(panel);
         this.variableSubstitutor = variableSubstitutor;
         this.handler = handler;
+        setVariableName(JDKPathPanel.JDK_PATH);
     }
 
     public boolean generateProperties(InstallData installData, PrintWriter printWriter)
     {
-        printWriter.println(JDKPathPanel.JDK_PATH + "=");
+        printWriter.println(getVariableName() + "=");
         return true;
     }
 
     public boolean run(InstallData installData, Properties properties)
     {
-        String strTargetPath = properties.getProperty(JDKPathPanel.JDK_PATH);
+        String strTargetPath = properties.getProperty(getVariableName());
         if (strTargetPath == null || "".equals(strTargetPath.trim()))
         {
             System.err.println("Missing mandatory JDK path!");
@@ -102,7 +104,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
             	return false;
             }
             
-            installData.setVariable(JDKPathPanel.JDK_PATH, strTargetPath);
+            installData.setVariable(getVariableName(), strTargetPath);
             return true;
         }
     }
@@ -121,7 +123,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
         String maxVersion = installData.getVariable(JDKPathPanel.JDK_PATH_PANEL_MAX_VERSION);
 
         String strPath;
-        String strDefaultPath = installData.getVariable(JDKPathPanel.JDK_PATH);
+        String strDefaultPath = installData.getVariable(getVariableName());
         if (strDefaultPath == null)
         {
             if (OsVersion.IS_OSX)
@@ -185,7 +187,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
             {
                 bKeepAsking = false;
             }
-            installData.setVariable(JDKPathPanel.JDK_PATH, strPath);
+            installData.setVariable(getVariableName(), strPath);
         }
 
         return promptEndPanel(installData, console);
@@ -435,5 +437,15 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
             }
         }
         return (retval);
+    }
+
+    public String getVariableName()
+    {
+        return variableName;
+    }
+
+    public void setVariableName(String variableName)
+    {
+        this.variableName = variableName;
     }
 }
