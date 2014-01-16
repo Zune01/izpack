@@ -30,6 +30,7 @@ import com.izforge.izpack.util.Console;
 import com.izforge.izpack.util.PlatformModelMatcher;
 
 import java.io.PrintWriter;
+import java.text.MessageFormat;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -118,10 +119,10 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
         List<GroupData> sortedGroups = new ArrayList<GroupData>(installGroups.values());
         Collections.sort(sortedGroups, InstallationGroups.BY_SORT_KEY);
 
-        GroupData selected = selectGroup(sortedGroups);
+        GroupData selected = selectGroup(sortedGroups, console);
         while (selected==null) {
             out(Prompt.Type.ERROR, "Must select an option");
-            selected = selectGroup(sortedGroups);
+            selected = selectGroup(sortedGroups, console);
         }
 
         this.automatedInstallData.setVariable(InstallationGroupPanel.INSTALL_GROUP, selected.name);
@@ -133,17 +134,29 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
         return promptEndPanel(installData, console);
     }
 
-    private GroupData selectGroup(List<GroupData> options)
+    private GroupData selectGroup(List<GroupData> options, Console console)
     {
         GroupData selected = null;
-        for (GroupData groupData : options) {
-            if (selected!=null) {
-                out(Prompt.Type.INFORMATION, groupData.description + SPACE + NOT_SELECTED);
-                continue;
+        if (options.size() < 10) {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 1; i < options.size() + 1; i++) {
+                GroupData data = options.get(i - 1);
+                builder.append(MessageFormat.format("{0} {1}\n", i, data.description));
             }
-            if (askUser(groupData.description)) {
-                selected = groupData;
-                continue;
+            int selectedIndex = console.prompt(builder.toString(), 1, options.size(), 0);
+            if (selectedIndex > 0) {
+                selected = options.get(selectedIndex - 1);
+            }
+        } else {
+            for (GroupData groupData : options) {
+                if (selected!=null) {
+                    out(Prompt.Type.INFORMATION, groupData.description + SPACE + NOT_SELECTED);
+                    continue;
+                }
+                if (askUser(groupData.description)) {
+                    selected = groupData;
+                    continue;
+                }
             }
         }
         return selected;

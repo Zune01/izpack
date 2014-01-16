@@ -187,7 +187,7 @@ public class UserInputConsolePanelTest
         ConsolePanels panels = createPanels(UserInputPanel.class, "ruleinput");
 
         console.addScript("rule1", "A.B.C.D");      // invalid host name
-        console.addScript("re-display", "1");
+        console.addScript("re-display", "3");
         console.addScript("re-enter", "127.0.0.1"); // valid host name
         console.addScript("continue", "1");
 
