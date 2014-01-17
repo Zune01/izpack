@@ -29,8 +29,6 @@
 #include <windows.h>
 #include <lmcons.h>
 #include <tchar.h>
-#include "WinLibEnv.h"
-
 
 JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_isUserAnAdmin(JNIEnv *, jobject)
 {
