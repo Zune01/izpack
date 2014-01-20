@@ -28,7 +28,10 @@
 #include "UnicodeHelper.h"
 #include <windows.h>
 #include <lmcons.h>
+#include <Lm.h>
 #include <tchar.h>
+
+typedef NTSTATUS (WINAPI *PNESA)(LPWSTR, DWORD, DWORD*, PZPWSTR*);
 
 JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_isUserAnAdmin(JNIEnv *, jobject)
 {
@@ -60,8 +63,8 @@ JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_isUserAnAdm
       the object.  Just checking access against the security descriptor alone
       will be sufficient.
    */
-   const DWORD ACCESS_READ  = 1;
-   const DWORD ACCESS_WRITE = 2;
+   const DWORD MY_ACCESS_READ  = 1;
+   const DWORD MY_ACCESS_WRITE = 2;
 
 
    __try
@@ -119,7 +122,7 @@ JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_isUserAnAdm
       if (!InitializeAcl(pACL, dwACLSize, ACL_REVISION2))
          __leave;
 
-      dwAccessMask= ACCESS_READ | ACCESS_WRITE;
+      dwAccessMask= MY_ACCESS_READ | MY_ACCESS_WRITE;
 
       if (!AddAccessAllowedAce(pACL, ACL_REVISION2, dwAccessMask, psidAdmin))
          __leave;
@@ -138,16 +141,16 @@ JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_isUserAnAdm
       if (!IsValidSecurityDescriptor(psdAdmin))
          __leave;
 
-      dwAccessDesired = ACCESS_READ;
+      dwAccessDesired = MY_ACCESS_READ;
 
       /*
          Initialize GenericMapping structure even though you
          do not use generic rights.
       */
-      GenericMapping.GenericRead    = ACCESS_READ;
-      GenericMapping.GenericWrite   = ACCESS_WRITE;
+      GenericMapping.GenericRead    = MY_ACCESS_READ;
+      GenericMapping.GenericWrite   = MY_ACCESS_WRITE;
       GenericMapping.GenericExecute = 0;
-      GenericMapping.GenericAll     = ACCESS_READ | ACCESS_WRITE;
+      GenericMapping.GenericAll     = MY_ACCESS_READ | MY_ACCESS_WRITE;
 
       if (!AccessCheck(psdAdmin, hImpersonationToken, dwAccessDesired,
                        &GenericMapping, &ps, &dwStructureSize, &dwStatus,
@@ -196,4 +199,35 @@ JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_validatePas
 			env->RELEASE_STRING_CHARS( jPassword, password);
 	}
 	return result;
+}
+
+/*
+ * Class:     com_izforge_izpack_util_win_UserInfo
+ * Method:    listManagedServiceAccounts
+ * Signature: ()[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_com_izforge_izpack_util_win_UserInfo_listManagedServiceAccounts(JNIEnv *env, jobject obj) {
+	HMODULE hMod = ::LoadLibrary(_T("logoncli.dll"));
+	PNESA pNESA = (PNESA)::GetProcAddress(hMod, "NetEnumerateServiceAccounts");
+	if (NULL != pNESA) {
+		DWORD dwCount = 0;
+		PZPWSTR pzAccts = NULL;
+		NTSTATUS result = pNESA(NULL, NULL, &dwCount, &pzAccts);
+    jclass StringObject = env->FindClass("java/lang/String");
+    if (dwCount > 0) {
+      jobjectArray strResult = env->NewObjectArray(dwCount, StringObject, NULL);
+      for (DWORD i = 0; i < dwCount; i++) {
+        env->SetObjectArrayElement(strResult, i, env->NewString((jchar*)pzAccts[i], (jsize)_tcslen(pzAccts[i])));
+      }
+		  ::NetApiBufferFree(pzAccts);
+      return strResult;
+    } else {
+      jobjectArray strResult = env->NewObjectArray(3, StringObject, NULL);
+      env->SetObjectArrayElement(strResult, 0, env->NewString((jchar*)L"Kalle", 5));
+      env->SetObjectArrayElement(strResult, 1, env->NewString((jchar*)L"Nisse", 5));
+      env->SetObjectArrayElement(strResult, 2, env->NewString((jchar*)L"Putte", 5));
+      return strResult;
+    }
+	}
+  return NULL;
 }

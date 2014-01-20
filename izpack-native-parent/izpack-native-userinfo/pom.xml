@@ -40,7 +40,7 @@
                     </sources>
 
                     <linkerStartOptions>
-                        <linkerStartOption>${commonLinkerOptions}</linkerStartOption>
+                        <linkerStartOption>${commonLinkerOptions} netapi32.lib</linkerStartOption>
                         <linkerStartOption>/MACHINE:X86</linkerStartOption>
                     </linkerStartOptions>
                 </configuration>
