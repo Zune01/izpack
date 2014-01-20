@@ -60,7 +60,6 @@
                 </property>
             </activation>
             <modules>
-                <module>izpack-native-maven-plugin</module>
                 <module>izpack-native-coioshelper</module>
                 <module>izpack-native-coioshelper-x64</module>
                 <module>izpack-native-setupapi</module>
@@ -83,6 +82,7 @@
                 </property>
             </activation>
             <modules>
+                <module>izpack-native-maven-plugin</module>
                 <module>izpack-native</module>
             </modules>
         </profile>
