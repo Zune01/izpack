@@ -221,12 +221,6 @@ JNIEXPORT jobjectArray JNICALL Java_com_izforge_izpack_util_win_UserInfo_listMan
       }
 		  ::NetApiBufferFree(pzAccts);
       return strResult;
-    } else {
-      jobjectArray strResult = env->NewObjectArray(3, StringObject, NULL);
-      env->SetObjectArrayElement(strResult, 0, env->NewString((jchar*)L"Kalle", 5));
-      env->SetObjectArrayElement(strResult, 1, env->NewString((jchar*)L"Nisse", 5));
-      env->SetObjectArrayElement(strResult, 2, env->NewString((jchar*)L"Putte", 5));
-      return strResult;
     }
 	}
   return NULL;
