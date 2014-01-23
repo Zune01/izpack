@@ -459,6 +459,7 @@ public abstract class PackagerBase implements IPackager
      */
     protected void writeManifest() throws IOException
     {
+        sendMsg("Adding Manifest to jar", PackagerListener.MSG_VERBOSE);
         // Add splash screen configuration
         List<String> lines = IOUtils.readLines(PackagerBase.class.getResourceAsStream("MANIFEST.MF"));
         if (splashScreenImage != null)
@@ -471,6 +472,7 @@ public abstract class PackagerBase implements IPackager
         File tempManifest = com.izforge.izpack.util.file.FileUtils.createTempFile("MANIFEST", ".MF");
         FileUtils.writeLines(tempManifest, lines);
         mergeManager.addResourceToMerge(tempManifest.getAbsolutePath(), "META-INF/MANIFEST.MF");
+        mergeManager.merge(installerJar);
     }
 
     /**
