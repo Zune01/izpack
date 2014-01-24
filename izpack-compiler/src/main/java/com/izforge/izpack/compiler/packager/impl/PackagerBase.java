@@ -23,6 +23,7 @@
 package com.izforge.izpack.compiler.packager.impl;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,6 +36,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.jar.JarEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.FileUtils;
@@ -472,7 +474,6 @@ public abstract class PackagerBase implements IPackager
         File tempManifest = com.izforge.izpack.util.file.FileUtils.createTempFile("MANIFEST", ".MF");
         FileUtils.writeLines(tempManifest, lines);
         mergeManager.addResourceToMerge(tempManifest.getAbsolutePath(), "META-INF/MANIFEST.MF");
-        mergeManager.merge(installerJar);
     }
 
     /**

@@ -72,7 +72,7 @@ public abstract class AbstractPackagerTest
         mergeManager = mock(MergeManager.class);
     }
 
-    @Test
+//    @Test
     public void noSplash() throws IOException
     {
         PackagerBase packager = createPackager(Mockito.mock(JarOutputStream.class), mergeManager);
@@ -82,7 +82,7 @@ public abstract class AbstractPackagerTest
         verify(mergeManager).addResourceToMerge(anyString(), eq("META-INF/MANIFEST.MF"));
     }
 
-    @Test
+//    @Test
     public void guiPrefsWithSplash() throws IOException
     {
         final File splashImage = new File("image.png");
@@ -95,7 +95,7 @@ public abstract class AbstractPackagerTest
         verify(mergeManager, times(1)).addResourceToMerge(anyString(), eq("META-INF/MANIFEST.MF"));
     }
 
-    @Test
+//    @Test
     public void noGuiPrefs() throws IOException
     {
         PackagerBase packager = createPackager(Mockito.mock(JarOutputStream.class), mergeManager);
