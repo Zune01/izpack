@@ -101,8 +101,9 @@ public class InstallationGroupPanel extends IzPanel
     private JTable groupsTable;
     private GroupData[] rows;
     private int selectedGroup = -1;
+    private String variableName;
 
-	static final String INSTALL_GROUP = "INSTALL_GROUP";
+	public static final String INSTALL_GROUP = "INSTALL_GROUP";
 
 
     /**
@@ -120,6 +121,7 @@ public class InstallationGroupPanel extends IzPanel
         super(panel, parent, installData, resources);
         this.matcher = matcher;
         buildLayout();
+        setVariableName(INSTALL_GROUP);
     }
 
     /**
@@ -228,8 +230,8 @@ public class InstallationGroupPanel extends IzPanel
         {
         	GroupData group = this.rows[selectedGroup];
             removeUnusedPacks(group, this.installData);
-            this.installData.setVariable(INSTALL_GROUP, group.name);
-            logger.fine("Added variable INSTALL_GROUP=" + group.name);
+            this.installData.setVariable(getVariableName(), group.name);
+            logger.fine("Added variable " + getVariableName() + "=" + group.name);
         }
     }
 
@@ -661,6 +663,16 @@ public class InstallationGroupPanel extends IzPanel
             count++;
         }
         return model;
+    }
+
+    public String getVariableName()
+    {
+        return variableName;
+    }
+
+    public void setVariableName(String variableName)
+    {
+        this.variableName = variableName;
     }
 
 }

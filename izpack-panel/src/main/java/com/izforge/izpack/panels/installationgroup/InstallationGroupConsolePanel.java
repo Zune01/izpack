@@ -50,6 +50,7 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
     private final Prompt prompt;
     private final AutomatedInstallData automatedInstallData;
     private final PlatformModelMatcher matcher;
+    private String variableName;
 
     public InstallationGroupConsolePanel(PanelView<Console> panel, Prompt prompt, AutomatedInstallData automatedInstallData, PlatformModelMatcher matcher)
     {
@@ -57,6 +58,7 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
         this.prompt = prompt;
         this.automatedInstallData = automatedInstallData;
         this.matcher = matcher;
+        setVariableName(InstallationGroupPanel.INSTALL_GROUP);
     }
 
     @Override
@@ -71,7 +73,7 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
             output.append(s);
         }
         printWriter.println("# Choose one of: " + output.toString());
-    	printWriter.println(InstallationGroupPanel.INSTALL_GROUP + "=");
+    	printWriter.println(getVariableName() + "=");
     	return true;
     }
     
@@ -79,14 +81,14 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
     public boolean run(InstallData installData, Properties properties)
     {
         Map<String, GroupData> installGroups = InstallationGroups.getInstallGroups(automatedInstallData);
-        String selectedGroup = properties.getProperty(InstallationGroupPanel.INSTALL_GROUP);
+        String selectedGroup = properties.getProperty(getVariableName());
         if (selectedGroup == null || selectedGroup.trim().isEmpty()) {
         	System.err.println("Missing mandatory installation group");
         	return false;
         }
         GroupData selected = installGroups.get(selectedGroup);
         if (selected != null) {
-            this.automatedInstallData.setVariable(InstallationGroupPanel.INSTALL_GROUP, selected.name);
+            this.automatedInstallData.setVariable(getVariableName(), selected.name);
             InstallationGroupPanel.removeUnusedPacks(selected, automatedInstallData);
             return true;
         } else {
@@ -125,8 +127,8 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
             selected = selectGroup(sortedGroups, console);
         }
 
-        this.automatedInstallData.setVariable(InstallationGroupPanel.INSTALL_GROUP, selected.name);
-        logger.fine("Added variable " + InstallationGroupPanel.INSTALL_GROUP + "=" + selected.name);
+        this.automatedInstallData.setVariable(getVariableName(), selected.name);
+        logger.fine("Added variable " + getVariableName() + "=" + selected.name);
 
         InstallationGroupPanel.removeUnusedPacks(selected, automatedInstallData);
 
@@ -170,5 +172,15 @@ public class InstallationGroupConsolePanel extends AbstractConsolePanel implemen
     private boolean askUser(String message)
     {
         return Prompt.Option.YES == prompt.confirm(Prompt.Type.QUESTION, message, Prompt.Options.YES_NO);
+    }
+
+    public String getVariableName()
+    {
+        return variableName;
+    }
+
+    public void setVariableName(String variableName)
+    {
+        this.variableName = variableName;
     }
 }

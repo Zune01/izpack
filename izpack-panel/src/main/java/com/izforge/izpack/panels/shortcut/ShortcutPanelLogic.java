@@ -52,6 +52,7 @@ import com.izforge.izpack.core.substitutor.VariableSubstitutorImpl;
 import com.izforge.izpack.data.ExecutableFile;
 import com.izforge.izpack.installer.data.UninstallData;
 import com.izforge.izpack.installer.event.InstallerListeners;
+import com.izforge.izpack.panels.installationgroup.InstallationGroupPanel;
 import com.izforge.izpack.util.CleanupClient;
 import com.izforge.izpack.util.FileExecutor;
 import com.izforge.izpack.util.Housekeeper;
@@ -921,7 +922,7 @@ public class ShortcutPanelLogic implements CleanupClient
 
         IXMLElement group = null;
         List<IXMLElement> groupSpecs = spec.getChildrenNamed(SPEC_KEY_PROGRAM_GROUP);
-        String selectedInstallGroup = this.installData.getVariable("INSTALL_GROUP");
+        String selectedInstallGroup = this.installData.getVariable(InstallationGroupPanel.INSTALL_GROUP);
         if (selectedInstallGroup != null)
         {
             // The user selected an InstallGroup before.

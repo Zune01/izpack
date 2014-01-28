@@ -48,7 +48,7 @@ public class InstallationGroupPanelAutomationHelper
     {
         GroupData[] rows = (GroupData[]) idata.getAttribute("GroupData");
         HashMap<String, Pack> packsByName = (HashMap) idata.getAttribute("packsByName");
-        String selectedInstallGroup = idata.getVariable("INSTALL_GROUP");
+        String selectedInstallGroup = idata.getVariable(InstallationGroupPanel.INSTALL_GROUP);
         
         // Write out the group to pack mappings
         for (GroupData groupData : rows)
