@@ -165,10 +165,11 @@ public class Debugger
             String currentvalue = currentvariables.getProperty(key);
             String oldvalue = lasttimevariables.getProperty(key);
 
+            String panelId = lastpanelmetadata == null ? "<none>" : lastpanelmetadata.getPanelId();
             if ((oldvalue == null))
             {
                 VariableHistory variableHistory = new VariableHistory(key);
-                variableHistory.addValue(currentvalue, "new after panel " + lastpanelmetadata.getPanelId());
+                variableHistory.addValue(currentvalue, "new after panel " + panelId);
                 variableshistory.put(key, variableHistory);
                 changes = true;
                 changedvariables.put(key, currentvalue);
@@ -179,7 +180,7 @@ public class Debugger
                 {
                     VariableHistory variableHistory = variableshistory.get(key);
                     variableHistory.addValue(currentvalue,
-                                             "changed value after panel " + lastpanelmetadata.getPanelId());
+                                             "changed value after panel " + panelId);
                     changes = true;
                     changedvariables.put(key, currentvalue);
                 }
