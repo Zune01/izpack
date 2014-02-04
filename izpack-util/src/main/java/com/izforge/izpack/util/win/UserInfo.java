@@ -31,6 +31,8 @@ public class UserInfo implements NativeLibraryClient
     public native boolean validatePassword(String userName, String domain, String password);
     
     public native String[] listManagedServiceAccounts();
+    
+    public native boolean doesServiceExist(String serviceName);
 
     @Override
     public void freeLibrary(String name)

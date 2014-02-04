@@ -225,3 +225,34 @@ JNIEXPORT jobjectArray JNICALL Java_com_izforge_izpack_util_win_UserInfo_listMan
 	}
   return NULL;
 }
+
+JNIEXPORT jboolean JNICALL Java_com_izforge_izpack_util_win_UserInfo_doesServiceExist(JNIEnv *env, jobject obj, jstring jServiceName) {
+	jboolean result = false;
+	LPCTSTR servicename = NULL;
+  SC_HANDLE mgrHandle = NULL;
+  SC_HANDLE serviceHandle = NULL;
+
+  if (jServiceName != NULL) {
+		servicename = (LPCTSTR)env->GET_STRING_CHARS( jServiceName, 0);
+  }
+  __try {
+    mgrHandle = ::OpenSCManager(NULL, SERVICES_ACTIVE_DATABASE, SC_MANAGER_CONNECT | SC_MANAGER_ENUMERATE_SERVICE);
+    if (mgrHandle != NULL) {
+      serviceHandle = ::OpenService(mgrHandle, servicename, SERVICE_QUERY_STATUS);
+      if (serviceHandle != NULL) {
+        return true;
+      } else {
+        return ::GetLastError() == ERROR_SERVICE_DOES_NOT_EXIST;
+      }
+    }
+  }
+  __finally {
+    if (serviceHandle != NULL) 
+      ::CloseServiceHandle(serviceHandle);
+    if (mgrHandle != NULL) 
+      ::CloseServiceHandle(mgrHandle);
+    if (servicename != NULL)
+			env->RELEASE_STRING_CHARS( jServiceName, servicename);
+  }
+  return true;
+}
