@@ -48,6 +48,7 @@ public class Platform
         SUSE_LINUX(Name.LINUX),
         UBUNTU_LINUX(Name.LINUX),
         CENTOS_LINUX(Name.RED_HAT_LINUX),
+        AMAZON_LINUX(Name.RED_HAT_LINUX),
         WINDOWS,
         UNKNOWN;
 

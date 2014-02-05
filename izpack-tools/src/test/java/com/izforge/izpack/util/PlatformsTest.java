@@ -93,6 +93,10 @@ public class PlatformsTest extends AbstractPlatformTest
 
         checkLinuxPlatform(Name.RED_HAT_LINUX, OsVersionConstants.REDHAT, null, false);
 
+        checkLinuxPlatform(Name.CENTOS_LINUX, OsVersionConstants.CENTOS, null, false);
+
+        checkLinuxPlatform(Name.AMAZON_LINUX, OsVersionConstants.AMAZON, null, false);
+
         checkLinuxPlatform(Name.SUSE_LINUX, OsVersionConstants.SUSE, null, false);
 
         checkLinuxPlatform(Name.UBUNTU_LINUX, null, OsVersionConstants.UBUNTU, false);

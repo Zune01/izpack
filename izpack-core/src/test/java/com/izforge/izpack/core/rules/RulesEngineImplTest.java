@@ -110,6 +110,10 @@ public class RulesEngineImplTest
     /**
      * Linux install condition identifier.
      */
+    private static final String LINUX_INSTALL_AMAZON = "izpack.linuxinstall.amazon";
+    /**
+     * Linux install condition identifier.
+     */
     private static final String LINUX_INSTALL_CENTOS = "izpack.linuxinstall.centos";
     /**
      * Linux install condition identifier.
@@ -589,6 +593,7 @@ public class RulesEngineImplTest
         checkPlatformCondition(Platforms.MANDRIVA_LINUX, LINUX_INSTALL_MANDRIVA, LINUX_INSTALL);
         checkPlatformCondition(Platforms.RED_HAT_LINUX, LINUX_INSTALL_RED_HAT, LINUX_INSTALL);
         checkPlatformCondition(Platforms.CENTOS_LINUX, LINUX_INSTALL_CENTOS, LINUX_INSTALL_RED_HAT, LINUX_INSTALL);
+        checkPlatformCondition(Platforms.AMAZON_LINUX, LINUX_INSTALL_AMAZON, LINUX_INSTALL_RED_HAT, LINUX_INSTALL);
         checkPlatformCondition(Platforms.SUSE_LINUX, LINUX_INSTALL_SUSE, LINUX_INSTALL);
         checkPlatformCondition(Platforms.UBUNTU_LINUX, LINUX_INSTALL_UBUNTU, LINUX_INSTALL);
         checkPlatformCondition(Platforms.SUNOS, SOLARIS_INSTALL);

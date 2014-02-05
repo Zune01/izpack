@@ -83,7 +83,7 @@ public class PlatformTest extends AbstractPlatformTest
         assertFalse(p2.isA(Name.DEBIAN_LINUX));
         
         Name[] linuxes = {Name.DEBIAN_LINUX, Name.FEDORA_LINUX, Name.MANDRAKE_LINUX, Name.MANDRIVA_LINUX,
-                Name.RED_HAT_LINUX, Name.SUSE_LINUX, Name.UBUNTU_LINUX};
+                Name.RED_HAT_LINUX, Name.SUSE_LINUX, Name.UBUNTU_LINUX, Name.AMAZON_LINUX, Name.CENTOS_LINUX};
         for (Name name : linuxes)
         {
             Platform linux = new Platform(name);
@@ -112,6 +112,11 @@ public class PlatformTest extends AbstractPlatformTest
         assertFalse(p4.isA(Name.MAC_OSX));
         
         Platform p5 = new Platform(Name.CENTOS_LINUX);
+        assertTrue(p5.isA(Name.UNIX));
+        assertTrue(p5.isA(Name.LINUX));
+        assertTrue(p5.isA(Name.RED_HAT_LINUX));
+
+        Platform p6 = new Platform(Name.AMAZON_LINUX);
         assertTrue(p5.isA(Name.UNIX));
         assertTrue(p5.isA(Name.LINUX));
         assertTrue(p5.isA(Name.RED_HAT_LINUX));

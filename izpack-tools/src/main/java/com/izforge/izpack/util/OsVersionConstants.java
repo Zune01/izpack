@@ -196,6 +196,11 @@ public interface OsVersionConstants
     public final static String CENTOS = "CentOS";
 
     /**
+     * AMAZON = "Amazon"
+     */
+    public final static String AMAZON = "Amazon";
+
+    /**
      * PROC_VERSION = "/proc/version"
      */
     public final static String PROC_VERSION = "/proc/version";

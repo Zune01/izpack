@@ -43,6 +43,11 @@ public class Platforms
     public static Platform AIX = new Platform(Name.AIX);
 
     /**
+     * Amazon Linux platform.
+     */
+    public static Platform AMAZON_LINUX = new Platform(Name.AMAZON_LINUX);
+
+    /**
      * CentOS Linux platform.
      */
     public static Platform CENTOS_LINUX = new Platform(Name.CENTOS_LINUX);
@@ -179,7 +184,7 @@ public class Platforms
      * Known platforms.
      */
     public static Platform[] PLATFORMS = {AIX, DEBIAN_LINUX, FEDORA_LINUX, FREEBSD, HP_UX, LINUX, MAC, MAC_OSX,
-            CENTOS_LINUX, MANDRAKE_LINUX, MANDRIVA_LINUX, OS_2, RED_HAT_LINUX, SUNOS, SUNOS_X86,
+            AMAZON_LINUX, CENTOS_LINUX, MANDRAKE_LINUX, MANDRIVA_LINUX, OS_2, RED_HAT_LINUX, SUNOS, SUNOS_X86,
             SUNOS_SPARC, SUSE_LINUX, UBUNTU_LINUX, UNIX, WINDOWS, WINDOWS_XP,
             WINDOWS_2003, WINDOWS_VISTA, WINDOWS_7, WINDOWS_8, WINDOWS_2008R2, WINDOWS_2012};
 
@@ -582,6 +587,11 @@ public class Platforms
                     else if (search(text, OsVersionConstants.CENTOS))
                     {
                         result = Name.CENTOS_LINUX;
+                        break;
+                    }
+                    else if (search(text, OsVersionConstants.AMAZON))
+                    {
+                        result = Name.AMAZON_LINUX;
                         break;
                     }
                 }
