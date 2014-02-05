@@ -128,6 +128,7 @@ public class JDKPathConsolePanel extends AbstractConsolePanel
             }
         }
 
+        helper = new JDKPathHelper(installData, minVersion, maxVersion);
         if (!JDKPathHelper.pathIsValid(strDefaultPath) || !helper.verifyVersion(strDefaultPath))
         {
             strDefaultPath = helper.resolveInRegistry(handler);
