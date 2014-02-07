@@ -263,7 +263,7 @@ public class JDKPathPanel extends PathInputPanel implements HyperlinkListener
         if (!JDKPathHelper.pathIsValid(chosenPath) || !helper.verifyVersion(chosenPath))
         {
             chosenPath = helper.resolveInRegistry(handler);
-            if (!pathIsValid() || !helper.verifyVersion(chosenPath))
+            if (!JDKPathHelper.pathIsValid(chosenPath) || !helper.verifyVersion(chosenPath))
             {
                 chosenPath = "";
             }
